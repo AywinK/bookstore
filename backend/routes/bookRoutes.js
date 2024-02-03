@@ -1,8 +1,8 @@
 import express from "express";
 const bookRoutes = express.Router();
-import { getAllBooks, getBooksByBookTitleSearchQuery } from "../controllers/bookController.js";
+import { getAllBooks, getFiveBooksBySearchQuery } from "../controllers/bookController.js";
 
 bookRoutes.get("/books", getAllBooks);
-bookRoutes.get("/book/search", getBooksByBookTitleSearchQuery);
+bookRoutes.get("/book/search", getFiveBooksBySearchQuery);
 
 export { bookRoutes };
