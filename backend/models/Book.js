@@ -1,5 +1,9 @@
 import { DataTypes, Model } from "sequelize";
-import { sequelize } from "../database/index";
+import { sequelize } from "../database/index.js";
+import { Order_Detail } from "./Order_Detail.js";
+import { Book_Category } from "./Book_Category.js";
+import { Author } from "./Author.js";
+import { Publisher } from "./Publisher.js";
 
 class Book extends Model { };
 
@@ -44,4 +48,17 @@ Book.init({
     }
 }, { sequelize, modelName: "Book", timestamps: false });
 
-module.exports = { Book };
+Author.hasMany(Book, { foreignKey: "author_id" });
+Book.belongsTo(Author, { foreignKey: "author_id" });
+
+Publisher.hasMany(Book, { foreignKey: "publisher_id" });
+Book.belongsTo(Publisher, { foreignKey: "publisher_id" });
+
+Book_Category.hasMany(Book, { foreignKey: "book_id" });
+Book.belongsTo(Book_Category, { foreignKey: "book_id" });
+
+Order_Detail.hasMany(Book, { foreignKey: "book_id" });
+Book.belongsTo(Order_Detail, { foreignKey: "book_id" });
+
+
+export { Book };

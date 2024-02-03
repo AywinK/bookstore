@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import { sequelize } from "../database/index";
+import { sequelize } from "../database/index.js";
 
 class Author extends Model { };
 
@@ -16,4 +16,4 @@ Author.init({
     }
 }, { sequelize, modelName: "Author", timestamps: false });
 
-module.exports = { Author };
+export  { Author };

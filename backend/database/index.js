@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 
+
 const sequelize = new Sequelize(
     "aywin_db",
     "learner",
@@ -15,4 +16,4 @@ const sequelize = new Sequelize(
     }
 );
 
-module.exports = {sequelize};
+export { sequelize };

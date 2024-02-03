@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize";
-import { sequelize } from "../database/index";
+import { sequelize } from "../database/index.js";
+import { Order } from "./Order.js";
 
 class Order_Detail extends Model { };
 
@@ -23,8 +24,11 @@ Order_Detail.init({
     },
     order_id: {
         type: DataTypes.INTEGER,
-        allowNull:false
+        allowNull: false
     }
 }, { sequelize, modelName: "Order_Detail", timestamps: false });
 
-module.exports = { Order_Detail };
+Order.hasMany(Order_Detail, { foreignKey: "order_id" });
+Order_Detail.belongsTo(Order, { foreignKey: "order_id" });
+
+export  { Order_Detail };
