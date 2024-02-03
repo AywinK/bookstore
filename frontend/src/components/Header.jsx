@@ -10,34 +10,24 @@ const Header = () => {
     const [keyword, setKeyword] = useState("");
     const [searchResults, setSearchResults] = useState([]);
 
+    console.log(keyword)
+
     useEffect(() => {
-        console.log("change triggered");
-        if (keyword) {
-            fetch(`http://localhost:3001/book/search?search=${keyword}`)
-                .then(res => res.json())
-                .then(data => {
-                    console.table(data);
-                    setSearchResults(() => data.map(book => ({ ...data, label: book.book_title })));
-                })
-                .catch(error => {
-                    console.error('Error fetching search results:', error);
-                });
-        } else {
-            fetch(`http://localhost:3001/books`)
-                .then(res => res.json())
-                .then(data => {
-                    console.table(data);
-                    setSearchResults(() => data.map(book => ({ ...data, label: book.book_title })));
-                })
-                .catch(error => {
-                    console.error('Error fetching search results:', error);
-                });
-        }
+
+        const fetchRequest = keyword ? `http://localhost:3001/book/search?search=${keyword}` : "http://localhost:3001/books"
+        fetch(fetchRequest)
+            .then(res => res.json())
+            .then(data => {
+                setSearchResults(() => data.map((book, index) => (index < 5 && { ...book, label: book.book_title })));
+            })
+            .catch(error => {
+                console.error('Error fetching search results:', error);
+            });
     }, [keyword]);
 
 
     return (
-        <AppBar position="static" sx={{width: "1000px"}}>
+        <AppBar position="static" sx={{ paddingTop: "5px", minWidth: "350px", maxWidth: "100%", margin: "0 auto", position: "absolute", top: "0px", left: "0px", right: "0px" }}>
             <Toolbar>
                 {/* Hamburger Menu Icon */}
                 <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
@@ -47,15 +37,18 @@ const Header = () => {
                 {/* Search Bar with Autocomplete */}
                 <div style={{ flexGrow: 1 }}>
                     <Autocomplete
+                        defaultValue={"Search by title, ISBN, author or publisher"}
                         freeSolo
                         id="search-bar"
-                        value={keyword}
-                        onChange={(e, val) => setKeyword(val)}
+                        inputValue={keyword}
+                        onInputChange={(e, val) => {
+                            setKeyword(val);
+                        }}
                         options={searchResults}
                         filterOptions={(x) => x}
                         getOptionLabel={(option) => (option?.label || "")}
                         renderInput={(params) => (
-                            <TextField {...params} label="Search…" variant="outlined" fullWidth />
+                            <TextField {...params} label="Search by title, ISBN, author or publisher" variant="filled" fullWidth />
                         )}
                     />
                 </div>
