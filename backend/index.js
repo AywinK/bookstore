@@ -8,6 +8,8 @@ app.use(cors());
 
 sequelize.authenticate(); // testing connection
 
+app.get("/", (req,res) => res.send("hello world"));
+
 app.use("/", bookRoutes);
 
 const PORT = process.env.PORT || 3001;
