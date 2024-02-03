@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import { sequelize } from "../database/index";
+import { sequelize } from "../database/index.js";
 
 class Customer extends Model { };
 
@@ -10,7 +10,7 @@ Customer.init({
         primaryKey: true
     },
     first_name: {
-        type:DataTypes.STRING
+        type: DataTypes.STRING
     },
     last_name: {
         type: DataTypes.STRING
@@ -22,4 +22,4 @@ Customer.init({
     }
 }, { sequelize, modelName: "Customer", timestamps: false });
 
-module.exports = { Customer };
+export { Customer };

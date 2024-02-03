@@ -1,5 +1,7 @@
 import { DataTypes, Model } from "sequelize";
-import { sequelize } from "../database/index";
+import { sequelize } from "../database/index.js";
+import { Category } from "./Category.js";
+
 
 class Book_Category extends Model { };
 
@@ -17,6 +19,9 @@ Book_Category.init({
         type: DataTypes.INTEGER,
         allowNull: false
     }
-}, { sequelize, modelName: "Book_Category", timestamps: false, indexes: [{unique:true, fields: ["book_id", "category_id"]}] });
+}, { sequelize, modelName: "Book_Category", timestamps: false, indexes: [{ unique: true, fields: ["book_id", "category_id"] }] });
 
-module.exports = { Book_Category };
+Category.hasMany(Book_Category, { foreignKey: "category_id" });
+Book_Category.belongsTo(Category, { foreignKey: "category_id" });
+
+export { Book_Category };

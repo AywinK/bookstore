@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import { sequelize } from "../database/index";
+import { sequelize } from "../database/index.js";
 
 class Publisher extends Model { };
 
@@ -15,4 +15,4 @@ Publisher.init({
     }
 }, { sequelize, modelName: "Publisher", timestamps: false });
 
-module.exports = { Publisher };
+export  { Publisher };

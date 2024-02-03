@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize";
-import { sequelize } from "../database/index";
+import { sequelize } from "../database/index.js";
+import { Customer } from "./Customer.js";
 
 class Order extends Model { };
 
@@ -35,4 +36,7 @@ Order.init({
     }
 }, { sequelize, modelName: "Order", timestamps: false });
 
-module.exports = { Order };
+Customer.hasMany(Order, { foreignKey: "customer_id" });
+Order.belongsTo(Customer, { foreignKey: "customer_id" });
+
+export  { Order };

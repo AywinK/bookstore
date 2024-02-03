@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import { sequelize } from "../database/index";
+import { sequelize } from "../database/index.js";
 
 class Category extends Model { };
 
@@ -15,4 +15,4 @@ Category.init({
     }
 }, { sequelize, modelName: "Category", timestamps: false });
 
-module.exports = { Category };
+export { Category };
