@@ -10,7 +10,7 @@ const Header = () => {
     const [keyword, setKeyword] = useState("");
     const [searchResults, setSearchResults] = useState([]);
 
-    console.log(keyword)
+    console.log(keyword);
 
     useEffect(() => {
 
@@ -18,7 +18,7 @@ const Header = () => {
         fetch(fetchRequest)
             .then(res => res.json())
             .then(data => {
-                setSearchResults(() => data.map((book, index) => (index < 5 && { ...book, label: book.book_title })));
+                setSearchResults(() => data.map((book, index) => (index < 5 && { ...book, label: book.book_title })).filter(el => el));
             })
             .catch(error => {
                 console.error('Error fetching search results:', error);

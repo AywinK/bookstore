@@ -6,7 +6,7 @@ const app = express();
 
 app.use(cors());
 
-// sequelize.authenticate(); // testing connection
+sequelize.authenticate(); // testing connection
 
 app.get("/", (req,res) => res.send("hello world"));
 
