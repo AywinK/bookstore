@@ -1,8 +1,10 @@
 import express from "express";
 import { sequelize } from './database/index.js';
 import { bookRoutes } from "./routes/bookRoutes.js";
-
+import cors from "cors";
 const app = express();
+
+app.use(cors());
 
 sequelize.authenticate(); // testing connection
 
