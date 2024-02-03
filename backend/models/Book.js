@@ -60,5 +60,4 @@ Book.belongsTo(Book_Category, { foreignKey: "book_id" });
 Order_Detail.hasMany(Book, { foreignKey: "book_id" });
 Book.belongsTo(Order_Detail, { foreignKey: "book_id" });
 
-
 export { Book };
