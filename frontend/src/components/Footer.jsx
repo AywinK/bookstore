@@ -10,6 +10,9 @@ import Link from '@mui/material/Link';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 
+import { Link as RouterLink } from "react-router-dom";
+
+
 const Footer = () => {
 
     return (
@@ -33,27 +36,27 @@ const Footer = () => {
                 </Typography>
                 <List>
                     <ListItem>
-                        <Link underline="hover" component="button" href="/faq" color="inherit">
+                        <Link underline="hover" component="button" to="/faq" color="inherit">
                             Frequently Asked Questions
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link underline="hover" component="button" href="/delivery" color="inherit">
+                        <Link underline="hover" component="button" to="/delivery" color="inherit">
                             Delivery Information
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link underline="hover" component="button" href="/click-and-collect" color="inherit">
+                        <Link underline="hover" component="button" to="/click-and-collect" color="inherit">
                             Click and Collect
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link underline="hover" component="button" href="/returns" color="inherit">
+                        <Link underline="hover" component="button" to="/returns" color="inherit">
                             Returns Policy
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link underline="hover" component="button" href="/contact" color="inherit">
+                        <Link underline="hover" component="button" to="/contact" color="inherit">
                             Contact Us
                         </Link>
                     </ListItem>
@@ -66,22 +69,22 @@ const Footer = () => {
                 </Typography>
                 <List>
                     <ListItem>
-                        <Link underline="hover" component="button" href="/privacy-notice" color="inherit">
+                        <Link underline="hover" component="button" to="/privacy-notice" color="inherit">
                             Privacy Notice
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link underline="hover" component="button" href="/terms-and-conditions" color="inherit">
+                        <Link underline="hover" component="button" to="/terms-and-conditions" color="inherit">
                             Terms and Conditions
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link underline="hover" component="button" href="/accessibility" color="inherit">
+                        <Link underline="hover" component="button" to="/accessibility" color="inherit">
                             Accessibility
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link underline="hover" component="button" href="/cookie-policy" color="inherit">
+                        <Link underline="hover" component="button" to="/cookie-policy" color="inherit">
                             Cookie Policy
                         </Link>
                     </ListItem>
@@ -94,12 +97,12 @@ const Footer = () => {
                 </Typography>
                 <List>
                     <ListItem>
-                        <Link underline="hover" component="button" href="/about-us" color="inherit">
+                        <Link underline="hover" component="button" to="/about-us" color="inherit">
                             About Us
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link underline="hover" component="button" href="/sitemap" color="inherit">
+                        <Link underline="hover" component="button" to="/sitemap" color="inherit">
                             Sitemap
                         </Link>
                     </ListItem>
