@@ -36,27 +36,27 @@ const Footer = () => {
                 </Typography>
                 <List>
                     <ListItem>
-                        <Link underline="hover" component="button" to="/faq" color="inherit">
+                        <Link underline="hover" component={RouterLink} to="/faq" color="inherit">
                             Frequently Asked Questions
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link underline="hover" component="button" to="/delivery" color="inherit">
+                        <Link underline="hover" component={RouterLink} to="/delivery" color="inherit">
                             Delivery Information
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link underline="hover" component="button" to="/click-and-collect" color="inherit">
+                        <Link underline="hover" component={RouterLink} to="/click-and-collect" color="inherit">
                             Click and Collect
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link underline="hover" component="button" to="/returns" color="inherit">
+                        <Link underline="hover" component={RouterLink} to="/returns" color="inherit">
                             Returns Policy
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link underline="hover" component="button" to="/contact" color="inherit">
+                        <Link underline="hover" component={RouterLink} to="/contact" color="inherit">
                             Contact Us
                         </Link>
                     </ListItem>
@@ -69,22 +69,22 @@ const Footer = () => {
                 </Typography>
                 <List>
                     <ListItem>
-                        <Link underline="hover" component="button" to="/privacy-notice" color="inherit">
+                        <Link underline="hover" component={RouterLink} to="/privacy-notice" color="inherit">
                             Privacy Notice
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link underline="hover" component="button" to="/terms-and-conditions" color="inherit">
+                        <Link underline="hover" component={RouterLink} to="/terms-and-conditions" color="inherit">
                             Terms and Conditions
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link underline="hover" component="button" to="/accessibility" color="inherit">
+                        <Link underline="hover" component={RouterLink} to="/accessibility" color="inherit">
                             Accessibility
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link underline="hover" component="button" to="/cookie-policy" color="inherit">
+                        <Link underline="hover" component={RouterLink} to="/cookie-policy" color="inherit">
                             Cookie Policy
                         </Link>
                     </ListItem>
@@ -97,12 +97,12 @@ const Footer = () => {
                 </Typography>
                 <List>
                     <ListItem>
-                        <Link underline="hover" component="button" to="/about-us" color="inherit">
+                        <Link underline="hover" component={RouterLink} to="/about-us" color="inherit">
                             About Us
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <Link underline="hover" component="button" to="/sitemap" color="inherit">
+                        <Link underline="hover" component={RouterLink} to="/sitemap" color="inherit">
                             Sitemap
                         </Link>
                     </ListItem>
