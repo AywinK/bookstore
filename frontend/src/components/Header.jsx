@@ -10,7 +10,7 @@ const Header = () => {
     const [keyword, setKeyword] = useState("");
     const [searchResults, setSearchResults] = useState([]);
 
-    console.log(keyword);
+    console.log(searchResults);
 
     useEffect(() => {
 
