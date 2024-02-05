@@ -1,6 +1,26 @@
 import { Box, Button } from '@mui/material';
 import collectionsBackgroundImage from "../assets/OIP.jpg";
 import { Link } from "react-router-dom";
+import CategoryBox from '../components/CategoryBox';
+
+const displayedCollectionList = [
+    {
+        categoryLink: "/non-fiction",
+        categoryName: "Non-Fiction"
+    },
+    {
+        categoryLink: "/fiction",
+        categoryName: "Fiction"
+    },
+    {
+        categoryLink: "/horror",
+        categoryName: "Horror"
+    },
+    {
+        categoryLink: "/technology",
+        categoryName: "Technology"
+    }
+]
 
 
 const Homepage = () => {
@@ -16,7 +36,7 @@ const Homepage = () => {
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     marginRight: "auto",
-                    marginLeft: "auto"
+                    marginLeft: "auto",
                 }}
             >
                 <Link to="/collections">
@@ -35,8 +55,9 @@ const Homepage = () => {
                     >View Collections
                     </Button>
                 </Link>
-
             </Box>
+
+            {displayedCollectionList.map(collection => <CategoryBox key={collection.categoryName} categoryLink={collection.categoryLink} categoryName={collection.categoryName} />)}
         </>
     )
 }

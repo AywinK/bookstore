@@ -9,7 +9,7 @@ function App() {
   return (
     <div
       style={{
-        paddingTop: "64px"
+        paddingTop: "72px"
       }}
     >
       <Header />
