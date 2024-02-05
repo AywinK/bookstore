@@ -115,7 +115,7 @@ const Header = () => {
                                 InputProps={{
                                     ...params.InputProps,
                                     style: {
-                                        color: "ghostwhite"
+                                        color: "whitesmoke"
                                     }
                                 }}
                             />
