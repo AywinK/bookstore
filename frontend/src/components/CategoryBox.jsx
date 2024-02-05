@@ -40,7 +40,9 @@ const CategoryBox = ({ categoryLink, categoryName }) => {
                     top: "20px",
                     left: "0px",
                     padding: "20px",
-                    textShadow: '2px 2px 4px rgba(173, 216, 230, 0.8)'
+                    textShadow: '2px 2px 4px rgba(173, 216, 230, 0.8)',
+                    textTransform: "capitalize",
+                    textAlign: "start",
                 }}
                 variant="h4"
                 color="whitesmoke"
