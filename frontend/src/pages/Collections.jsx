@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CategoryBox from "../components/CategoryBox";
+import { CircularProgress } from "@mui/material";
 
 
 const Collections = () => {
@@ -21,7 +22,11 @@ const Collections = () => {
                 justifyContent: "space-evenly"
             }}
         >
-            {collectionData && collectionData.map(({ category_name }) => <CategoryBox key={category_name} categoryLink={`${category_name}`} categoryName={category_name} />)}
+            {collectionData
+                ?
+                collectionData.map(({ category_name }) => <CategoryBox key={category_name} categoryLink={`${category_name}`} categoryName={category_name} />)
+                :
+                <CircularProgress />}
         </div>
     )
 }
