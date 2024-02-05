@@ -29,7 +29,7 @@ const CategoryBox = ({ categoryLink, categoryName }) => {
                     right: 0,
                     bottom: 0,
                     borderRadius: "16px",
-                    background: "rgba(0,0,0,0.2)",
+                    background: "rgba(40,40,40,0.5)",
                 }
             }
             }

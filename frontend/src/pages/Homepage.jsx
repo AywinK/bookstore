@@ -5,19 +5,19 @@ import CategoryBox from '../components/CategoryBox';
 
 const displayedCollectionList = [
     {
-        categoryLink: "/non-fiction",
+        categoryLink: "/collections/non-fiction",
         categoryName: "Non-Fiction"
     },
     {
-        categoryLink: "/fiction",
+        categoryLink: "/collections/fiction",
         categoryName: "Fiction"
     },
     {
-        categoryLink: "/horror",
+        categoryLink: "/collections/horror",
         categoryName: "Horror"
     },
     {
-        categoryLink: "/technology",
+        categoryLink: "/collections/technology",
         categoryName: "Technology"
     }
 ]
@@ -29,6 +29,7 @@ const Homepage = () => {
         <>
             <Box
                 sx={{
+                    position: "relative",
                     aspectRatio: "1/1",
                     width: '300px',
                     borderRadius: '16px',
@@ -37,27 +38,48 @@ const Homepage = () => {
                     backgroundPosition: 'center',
                     marginRight: "auto",
                     marginLeft: "auto",
+
+
+                    "&:before": {
+                        content: '""',
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        borderRadius: "16px",
+                        background: "rgba(0,0,0,0.4)",
+                    }
                 }}
             >
                 <Link to="/collections">
                     <Button
                         variant="contained"
                         size='large'
-                        color="primary"
+                        color="secondary"
                         sx={{
-                            opacity: "0.7",
                             marginTop: "100px",
                             marginLeft: "auto",
                             marginRight: "auto",
                             marginBottom: "200px",
-                            borderRadius: "5px",
+                            borderRadius: "10px",
+
                         }}
                     >View Collections
                     </Button>
                 </Link>
             </Box>
 
-            {displayedCollectionList.map(collection => <CategoryBox key={collection.categoryName} categoryLink={collection.categoryLink} categoryName={collection.categoryName} />)}
+            <div
+                style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    alignItems: "center",
+                    justifyContent: "space-evenly"
+                }}
+            >
+                {displayedCollectionList.map(collection => <CategoryBox key={collection.categoryName} categoryLink={collection.categoryLink} categoryName={collection.categoryName} />)}
+            </div>
         </>
     )
 }
