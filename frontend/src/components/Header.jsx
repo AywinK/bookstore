@@ -101,7 +101,24 @@ const Header = () => {
                         filterOptions={(x) => x}
                         getOptionLabel={(option) => (option?.label || "")}
                         renderInput={(params) => (
-                            <TextField {...params} label="Search by title, ISBN, author or publisher" variant="filled" fullWidth />
+                            <TextField
+                                {...params}
+                                label="Search by title, ISBN, author or publisher"
+                                variant="filled"
+                                fullWidth
+                                InputLabelProps={{
+                                    ...params.InputLabelProps,
+                                    style: {
+                                        color: "whitesmoke"
+                                    }
+                                }}
+                                InputProps={{
+                                    ...params.InputProps,
+                                    style: {
+                                        color: "ghostwhite"
+                                    }
+                                }}
+                            />
                         )}
                     />
                 </div>

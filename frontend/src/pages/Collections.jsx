@@ -22,11 +22,13 @@ const Collections = () => {
                 justifyContent: "space-evenly"
             }}
         >
-            {collectionData
-                ?
-                collectionData.map(({ category_name }) => <CategoryBox key={category_name} categoryLink={`${category_name}`} categoryName={category_name} />)
-                :
-                <CircularProgress />}
+            {
+                collectionData
+                    ?
+                    collectionData.map(({ category_name }) => <CategoryBox key={category_name} categoryLink={`${category_name}`} categoryName={category_name} />)
+                    :
+                    <CircularProgress />
+            }
         </div>
     )
 }
