@@ -13,14 +13,11 @@ function App() {
         paddingTop: "72px"
       }}
     >
-      <Header />
-
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="/" element={<Homepage />} />
         </Route>
       </Routes>
-      <Footer />
     </div>
   )
 }
