@@ -84,7 +84,7 @@ const getAllBooksByCategoryName = async (req, res) => {
             include: [
                 {
                     model: Category,
-                    where: { category_name: req.query.categoryName },
+                    where: { category_name: req.query.category_name },
                     through: { model: Book_Category, attributes: [] },
                 },
                 {
