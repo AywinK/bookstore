@@ -4,6 +4,7 @@ import { Order_Detail } from "./Order_Detail.js";
 import { Book_Category } from "./Book_Category.js";
 import { Author } from "./Author.js";
 import { Publisher } from "./Publisher.js";
+import { Category } from "./Category.js";
 
 class Book extends Model { };
 
@@ -54,10 +55,10 @@ Book.belongsTo(Author, { foreignKey: "author_id" });
 Publisher.hasMany(Book, { foreignKey: "publisher_id" });
 Book.belongsTo(Publisher, { foreignKey: "publisher_id" });
 
-Book_Category.hasMany(Book, { foreignKey: "book_id" });
-Book.belongsTo(Book_Category, { foreignKey: "book_id" });
-
 Order_Detail.hasMany(Book, { foreignKey: "book_id" });
 Book.belongsTo(Order_Detail, { foreignKey: "book_id" });
+
+Book.belongsToMany(Category, { through: Book_Category, foreignKey: "book_id" });
+Category.belongsToMany(Book, { through: Book_Category, foreignKey: "category_id" });
 
 export { Book };
