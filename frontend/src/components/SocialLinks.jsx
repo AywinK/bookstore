@@ -9,7 +9,8 @@ import Link from '@mui/material/Link';
 
 
 
-const SocialLinks = () => {
+// eslint-disable-next-line react/prop-types
+const SocialLinks = ({ isMobile }) => {
 
     return (
         <>
@@ -17,7 +18,7 @@ const SocialLinks = () => {
                 <Typography variant="h5" textAlign="start" gutterBottom>
                     Follow Us
                 </Typography>
-                <Box display="flex" alignItems="center" justifyContent="space-evenly">
+                <Box display="flex" flexDirection={isMobile ? "row" : "column"} alignItems="center" justifyContent="space-evenly" gap="20px">
                     <Link color="inherit" href="https://www.instagram.com">
                         <InstagramIcon sx={{ fontSize: 40 }} />
                     </Link>

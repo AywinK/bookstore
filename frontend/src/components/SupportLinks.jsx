@@ -12,7 +12,7 @@ const SupportLinks = () => {
     return (
         <>
             <div>
-                <Typography variant="h5" textAlign="start" marginTop="10px">
+                <Typography variant="h5" textAlign="start">
                     Support
                 </Typography>
                 <List>
