@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
+import BookCard from "../components/BookCard";
 
 const BookCategory = () => {
 
@@ -18,9 +19,18 @@ const BookCategory = () => {
     console.log(booksData);
 
     return (
-        <>
-            {booksData ? booksData.map(book => (<p style={{margin: "50px auto", border: "0.25rem solid red"}} key={book.book_id}>{book.book_title}</p>)) : <CircularProgress />}
-        </>
+        <div
+        style={{
+            margin: "20px auto",
+            display: "flex",
+            justifyContent: "space-evenly",
+            alignItems: "flex-start",
+            flexWrap: "wrap",
+            gap: "20px",
+        }}
+        >
+            {booksData ? booksData.map(book => <BookCard key={book.book_id} book={book} />) : <CircularProgress />}
+        </div>
     )
 }
 
