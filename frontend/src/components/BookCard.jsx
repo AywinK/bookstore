@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { Card, CardMedia, CardContent, Typography, CardActions, Button, Skeleton, useMediaQuery } from '@mui/material';
+import { Card, CardMedia, CardContent, Typography, CardActions, Button, Skeleton, useMediaQuery, Rating } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 
@@ -18,12 +18,12 @@ const BookCard = ({ book }) => {
                 gridTemplateColumns: "1fr 2fr",
                 gridTemplateRows: "4fr 1fr",
                 gap: "10px",
-                // maxHeight: "300px",
+                aspectRatio: "170/193",
                 maxWidth: "600px",
                 padding: "10px",
                 margin: "auto",
             }}
-            elevation={7}
+                elevation={7}
             >
                 {book.imageUrl ? <CardMedia
                     component="img"
@@ -31,7 +31,7 @@ const BookCard = ({ book }) => {
                         objectFit: 'cover',
                         gridRow: "1/ span 2",
                         gridColumn: "1",
-                        aspectRatio: "148/193"
+                        // aspectRatio: "148/193"
                     }}
                     width="150px"
                     image={book.imageUrl}
@@ -47,7 +47,7 @@ const BookCard = ({ book }) => {
                                 objectFit: 'cover',
                                 gridRow: "1/ span 2",
                                 gridColumn: "1",
-                                aspectRatio: "148/193"
+                                // aspectRatio: "148/193"
                             }}
                             width="150px"
                             image={book.imageUrl}
@@ -58,20 +58,35 @@ const BookCard = ({ book }) => {
                 <CardContent sx={{
                     gridColumn: "2",
                     gridRow: "1",
+                    display: "flex",
+                    flexDirection: "column",
                     flex: '1 0 auto',
+                    textAlign: "start",
+                    textOverflow: "ellipsis"
                 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography  variant="h5" component="h2">
                         {book.book_title}
                     </Typography>
                     <Typography variant="subtitle1" color="text.secondary" gutterBottom>
                         {book.author}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" gutterBottom>
-                        {average_ratings} ({book.count_ratings}
-)                    </Typography>
-                    <Typography variant="body2" color="text.secondary" gutterBottom>
-                        
+                    <Typography
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "flex-start",
+
+                        }}
+                        variant="body2"
+                        color="text.secondary"
+                        gutterBottom
+                    >
+                        {average_ratings}
+                        <Rating value={average_ratings} readOnly />
+                        ({book.count_ratings}
+                        )
                     </Typography>
+
                     <Typography variant="body1" color="text.primary">
                         £{parseFloat(book.price).toFixed(2)}
                     </Typography>
@@ -81,6 +96,9 @@ const BookCard = ({ book }) => {
                     gridRow: "2",
                     justifyContent: "space-between",
                     alignItems: "flex-end",
+                    display: "grid",
+                    gridTemplateRows: "1fr",
+                    gridTemplateColumns: "1fr 2fr",
                 }}>
                     <Button size="small" color="secondary" variant="contained">
                         Add to Basket
