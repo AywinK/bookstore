@@ -20,7 +20,7 @@ const Header = () => {
                     width: "80%"
                 }}
             >{option.label}</p>
-            <Button
+            {option.label !== "Start typing to find books" && <Button
                 variant="outlined"
                 style={{
                     justifySelf: "flex-end"
@@ -39,12 +39,12 @@ const Header = () => {
                 }}
             >
                 Add to Basket
-            </Button>
+            </Button>}
         </li>
     );
 
     const [keyword, setKeyword] = useState("");
-    const [searchResults, setSearchResults] = useState([]);
+    const [searchResults, setSearchResults] = useState([{ label: "Start typing to search for books" }]);
     const [selectedValue, setSelectedValue] = useState("");
 
     console.log(searchResults);
@@ -52,15 +52,17 @@ const Header = () => {
 
     useEffect(() => {
 
-        const fetchRequest = keyword ? `http://localhost:3001/book/search?search=${keyword}` : "http://localhost:3001/books"
-        fetch(fetchRequest)
-            .then(res => res.json())
-            .then(data => {
-                setSearchResults(() => data.map((book, index) => (index < 5 && { ...book, label: book.book_title })).filter(el => el));
-            })
-            .catch(error => {
-                console.error('Error fetching search results:', error);
-            });
+        const fetchRequest = keyword && `http://localhost:3001/book/search?search=${keyword}` // : "http://localhost:3001/books"
+        if (keyword.length > 0) {
+            fetch(fetchRequest)
+                .then(res => res.json())
+                .then(data => {
+                    setSearchResults(() => data.map((book, index) => (index < 5 && { ...book, label: book.book_title })).filter(el => el));
+                })
+                .catch(error => {
+                    console.error('Error fetching search results:', error);
+                });
+        }
     }, [keyword]);
 
 
