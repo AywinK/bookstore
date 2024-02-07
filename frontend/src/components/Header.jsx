@@ -20,7 +20,7 @@ const Header = () => {
                     width: "80%"
                 }}
             >{option.label}</p>
-            {option.label !== "Start typing to find books" && <Button
+            {option.label !== "Start typing to search for books" && <Button
                 variant="outlined"
                 style={{
                     justifySelf: "flex-end"
