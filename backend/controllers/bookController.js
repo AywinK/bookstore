@@ -20,7 +20,7 @@ const getAllBooks = async (req, res) => {
                 }
             ]
         });
-        res.status(200).json(books.map(el => new BookClass(el.book_id, el.book_title, el.isbn, el.price, el.book_description, el.stock_quantity, el.average_ratings, el.count_ratings, el.Author.full_name, el.Publisher.publisher_name)));
+        res.status(200).json(books.map(el => new BookClass(el.book_id, el.book_title, el.isbn, el.publication_year, el.price, el.book_description, el.stock_quantity, el.average_ratings, el.count_ratings, el.Author.full_name, el.Publisher.publisher_name)));
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Internal Server Error" });
@@ -70,7 +70,7 @@ const getFiveBooksBySearchQuery = async (req, res) => {
             limit: 5
         });
 
-        res.status(200).json(books.map(el => new BookClass(el.book_id, el.book_title, el.isbn, el.price, el.book_description, el.stock_quantity, el.average_ratings, el.count_ratings, el.Author.full_name, el.Publisher.publisher_name)));
+        res.status(200).json(books.map(el => new BookClass(el.book_id, el.book_title, el.isbn, el.publication_year, el.price, el.book_description, el.stock_quantity, el.average_ratings, el.count_ratings, el.Author.full_name, el.Publisher.publisher_name)));
 
     } catch (err) {
         console.error(err);
@@ -98,7 +98,7 @@ const getAllBooksByCategoryName = async (req, res) => {
             ],
         });
 
-        res.status(200).json(books.map(el => new BookClass(el.book_id, el.book_title, el.isbn, el.price, el.book_description, el.stock_quantity, el.average_ratings, el.count_ratings, el.Author.full_name, el.Publisher.publisher_name)));
+        res.status(200).json(books.map(el => new BookClass(el.book_id, el.book_title, el.isbn, el.publication_year, el.price, el.book_description, el.stock_quantity, el.average_ratings, el.count_ratings, el.Author.full_name, el.Publisher.publisher_name)));
 
 
     } catch (err) {

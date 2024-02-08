@@ -9,7 +9,7 @@ const BookCard = ({ book }) => {
 
     const isMobile = useMediaQuery("(max-width: 688px)")
 
-    const { book_id, book_title, isbn, price, book_description, stock_quantity, average_ratings, count_ratings, author, publisher } = book;
+    const { book_id, book_title, isbn, price, book_description, stock_quantity, average_ratings, count_ratings, author, publisher, publication_year } = book;
 
     return (
         <>
@@ -90,7 +90,7 @@ const BookCard = ({ book }) => {
                         color="text.secondary"
                         gutterBottom
                     >
-                        {book.author}
+                        by {book.author} | Publisher: {publisher} ({publication_year})
                     </Typography>
                     <Typography
                         sx={{
