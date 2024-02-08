@@ -1,5 +1,5 @@
 import { Box, Button } from '@mui/material';
-import collectionsBackgroundImage from "../assets/OIP.jpg";
+import collectionsBackgroundImage from "../assets/bookstore_banner.png";
 import { Link } from "react-router-dom";
 import CategoryBox from '../components/CategoryBox';
 
@@ -30,9 +30,9 @@ const Homepage = () => {
             <Box
                 sx={{
                     position: "relative",
-                    aspectRatio: "1/1",
-                    width: '300px',
-                    borderRadius: '16px',
+                    // aspectRatio: "1/1",
+                    width: '100%',
+                    borderRadius: '8px',
                     backgroundImage: `url(${collectionsBackgroundImage})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
@@ -48,7 +48,7 @@ const Homepage = () => {
                         right: 0,
                         bottom: 0,
                         borderRadius: "16px",
-                        background: "rgba(0,0,0,0.4)",
+                        background: "rgba(0,0,0,0.65)",
                     }
                 }}
             >

@@ -7,7 +7,7 @@ const HideHeaderOnScroll = ({ children }) => {
     const trigger = useScrollTrigger();
 
     return (
-        <Slide appear={false} direction="down" in={!trigger}>
+        <Slide appear={true} direction="down" in={!trigger}>
             {children}
         </Slide>
     )
