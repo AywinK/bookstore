@@ -1,8 +1,7 @@
 import FooterSection from './FooterSection';
 import footerData from "../siteData/footerData.json";
-
 import SocialLinks from './SocialLinks';
-import { useMediaQuery } from '@mui/material';
+import { Stack, useMediaQuery, Container } from '@mui/material';
 
 
 const Footer = () => {
@@ -10,14 +9,14 @@ const Footer = () => {
     const isMobile = useMediaQuery("(max-width: 688px)");
 
     return (
-        <>
+        <Container component="footer">
             <hr
                 style={{
                     borderWidth: "2px",
                     borderColor: "lightslategray"
                 }}
             />
-            <footer
+            <Stack
                 style={{
                     display: "flex",
                     flexDirection: isMobile ? "column" : "row",
@@ -31,8 +30,8 @@ const Footer = () => {
                 <FooterSection heading="Support" dataArr={footerData.supportLinks} />
                 <FooterSection heading="Legal" dataArr={footerData.legalLinks} />
                 <FooterSection heading="About" dataArr={footerData.aboutLinks} />
-            </footer>
-        </>
+            </Stack>
+        </Container>
     )
 }
 

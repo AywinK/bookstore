@@ -10,7 +10,6 @@ import ListItem from '@mui/material/ListItem';
 import Stack from '@mui/material/Stack';
 
 
-
 // eslint-disable-next-line react/prop-types
 const SocialLinks = ({ isMobile }) => {
 
@@ -24,37 +23,44 @@ const SocialLinks = ({ isMobile }) => {
                     display: "flex",
                     flexDirection: isMobile ? "row" : "column",
                     alignItems: "center",
-                    justifyContent: "center",
+                    justifyContent: "start",
+                    gap: "10px",
+                    flexWrap: "wrap",
+                    maxWidth: "100%",
+                    "& > *": {
+                        maxWidth: "60px",
+                        aspectRatio: "1 / 1"
+                    }
                 }}
             >
 
                 <ListItem>
                     <Link margin="auto" color="inherit" href="https://www.instagram.com">
-                        <InstagramIcon fontSize={isMobile ? "medium" : "large"} />
+                        <InstagramIcon fontSize={isMobile ? "large" : "large"} />
                     </Link>
                 </ListItem>
 
                 <ListItem>
                     <Link margin="auto" color="inherit" href="https://www.facebook.com">
-                        <FacebookIcon fontSize={isMobile ? "medium" : "large"} />
+                        <FacebookIcon fontSize={isMobile ? "large" : "large"} />
                     </Link>
                 </ListItem>
 
                 <ListItem>
                     <Link margin="auto" color="inherit" href="https://www.youtube.com">
-                        <YouTubeIcon fontSize={isMobile ? "medium" : "large"} />
+                        <YouTubeIcon fontSize={isMobile ? "large" : "large"} />
                     </Link>
                 </ListItem>
 
                 <ListItem>
                     <Link margin="auto" color="inherit" href="https://linkedin.com">
-                        <LinkedInIcon fontSize={isMobile ? "medium" : "large"} />
+                        <LinkedInIcon fontSize={isMobile ? "large" : "large"} />
                     </Link>
                 </ListItem>
 
                 <ListItem>
                     <Link margin="auto" color="inherit" href="https://www.x.com">
-                        <XIcon fontSize={isMobile ? "medium" : "large"} />
+                        <XIcon fontSize={isMobile ? "large" : "large"} />
                     </Link>
                 </ListItem>
             </List>
