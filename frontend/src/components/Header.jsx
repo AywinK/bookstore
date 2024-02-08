@@ -5,6 +5,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
+import HideHeaderOnScroll from './HideHeaderOnScroll';
 
 const Header = () => {
 
@@ -67,74 +68,76 @@ const Header = () => {
 
 
     return (
-        <AppBar position="fixed"
-            // sx={{
-            //     paddingTop: "5px",
-            //     minWidth: "350px",
-            //     maxWidth: "100%",
-            //     margin: "0 auto",
-            //     position: "absolute",
-            //     top: "0px",
-            //     left: "0px",
-            //     right: "0px",
-            // }}
-            id="header"
-        >
-            <Toolbar>
-                {/* Hamburger Menu Icon */}
-                <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-                    <MenuIcon />
-                </IconButton>
+        <HideHeaderOnScroll>
+            <AppBar position="fixed"
+                // sx={{
+                //     paddingTop: "5px",
+                //     minWidth: "350px",
+                //     maxWidth: "100%",
+                //     margin: "0 auto",
+                //     position: "absolute",
+                //     top: "0px",
+                //     left: "0px",
+                //     right: "0px",
+                // }}
+                id="header"
+            >
+                <Toolbar>
+                    {/* Hamburger Menu Icon */}
+                    <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+                        <MenuIcon />
+                    </IconButton>
 
-                {/* Search Bar with Autocomplete */}
-                <div style={{ flexGrow: 1 }}>
-                    <Autocomplete
-                        getOptionDisabled={option => option.label === "Start typing to search for books"}
-                        renderOption={renderOption}
-                        defaultValue={"Search by title, ISBN, author or publisher"}
-                        freeSolo
-                        id="search-bar"
-                        value={selectedValue}
-                        onChange={(e, val) => setSelectedValue(val)}
-                        inputValue={keyword}
-                        onInputChange={(e, val) => {
-                            setKeyword(val);
-                        }}
-                        onClose={() => setKeyword("")}
-                        options={searchResults}
-                        filterOptions={(x) => x}
-                        getOptionLabel={(option) => (option?.label || "")}
-                        renderInput={(params) => (
-                            <TextField
-                                {...params}
-                                label="Search by title, ISBN, author or publisher"
-                                variant="filled"
-                                fullWidth
-                                InputLabelProps={{
-                                    ...params.InputLabelProps,
-                                    style: {
-                                        color: "whitesmoke"
-                                    }
-                                }}
-                                InputProps={{
-                                    ...params.InputProps,
-                                    style: {
-                                        color: "whitesmoke"
-                                    }
-                                }}
-                            />
-                        )}
-                    />
-                </div>
+                    {/* Search Bar with Autocomplete */}
+                    <div style={{ flexGrow: 1 }}>
+                        <Autocomplete
+                            getOptionDisabled={option => option.label === "Start typing to search for books"}
+                            renderOption={renderOption}
+                            defaultValue={"Search by title, ISBN, author or publisher"}
+                            freeSolo
+                            id="search-bar"
+                            value={selectedValue}
+                            onChange={(e, val) => setSelectedValue(val)}
+                            inputValue={keyword}
+                            onInputChange={(e, val) => {
+                                setKeyword(val);
+                            }}
+                            onClose={() => setKeyword("")}
+                            options={searchResults}
+                            filterOptions={(x) => x}
+                            getOptionLabel={(option) => (option?.label || "")}
+                            renderInput={(params) => (
+                                <TextField
+                                    {...params}
+                                    label="Search by title, ISBN, author or publisher"
+                                    variant="filled"
+                                    fullWidth
+                                    InputLabelProps={{
+                                        ...params.InputLabelProps,
+                                        style: {
+                                            color: "whitesmoke"
+                                        }
+                                    }}
+                                    InputProps={{
+                                        ...params.InputProps,
+                                        style: {
+                                            color: "whitesmoke"
+                                        }
+                                    }}
+                                />
+                            )}
+                        />
+                    </div>
 
-                {/* Basket Icon */}
-                <IconButton size="large" color="inherit">
-                    <Badge badgeContent={4} color="error">
-                        <ShoppingCartIcon />
-                    </Badge>
-                </IconButton>
-            </Toolbar>
-        </AppBar>
+                    {/* Basket Icon */}
+                    <IconButton size="large" color="inherit">
+                        <Badge badgeContent={4} color="error">
+                            <ShoppingCartIcon />
+                        </Badge>
+                    </IconButton>
+                </Toolbar>
+            </AppBar>
+        </HideHeaderOnScroll>
     );
 };
 
