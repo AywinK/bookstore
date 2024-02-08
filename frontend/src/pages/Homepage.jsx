@@ -2,6 +2,7 @@ import { Box, Button } from '@mui/material';
 import collectionsBackgroundImage from "../assets/bookstore_banner.png";
 import { Link } from "react-router-dom";
 import CategoryBox from '../components/CategoryBox';
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const displayedCollectionList = [
     {
@@ -25,6 +26,8 @@ const displayedCollectionList = [
 
 const Homepage = () => {
 
+    const isMobile = useMediaQuery("(max-width: 688px)")
+
     return (
         <>
             <Box
@@ -32,7 +35,7 @@ const Homepage = () => {
                     position: "relative",
                     // aspectRatio: "1/1",
                     width: '100%',
-                    borderRadius: '8px',
+                    borderRadius: isMobile ? "0px" : "8px",
                     backgroundImage: `url(${collectionsBackgroundImage})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
@@ -47,7 +50,7 @@ const Homepage = () => {
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        borderRadius: "16px",
+                        borderRadius: isMobile ? "0px" : "8px",
                         background: "rgba(0,0,0,0.65)",
                     }
                 }}
