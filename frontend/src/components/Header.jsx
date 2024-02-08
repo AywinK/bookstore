@@ -88,6 +88,7 @@ const Header = () => {
                 {/* Search Bar with Autocomplete */}
                 <div style={{ flexGrow: 1 }}>
                     <Autocomplete
+                        getOptionDisabled={option => option.label === "Start typing to search for books"}
                         renderOption={renderOption}
                         defaultValue={"Search by title, ISBN, author or publisher"}
                         freeSolo
