@@ -47,7 +47,6 @@ const BookCard = ({ book }) => {
                     (<Skeleton
                         variant="rounded"
                         sx={{
-                            border: "0.2rem solid red",
                             gridRow: "1 / 3",
                             gridColumn: "1",
                             margin: "auto 5px",
