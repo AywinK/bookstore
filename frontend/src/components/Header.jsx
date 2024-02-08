@@ -67,16 +67,17 @@ const Header = () => {
 
 
     return (
-        <AppBar position="static" sx={{
-            paddingTop: "5px",
-            minWidth: "350px",
-            maxWidth: "100%",
-            margin: "0 auto",
-            position: "absolute",
-            top: "0px",
-            left: "0px",
-            right: "0px",
-        }}
+        <AppBar position="fixed"
+            // sx={{
+            //     paddingTop: "5px",
+            //     minWidth: "350px",
+            //     maxWidth: "100%",
+            //     margin: "0 auto",
+            //     position: "absolute",
+            //     top: "0px",
+            //     left: "0px",
+            //     right: "0px",
+            // }}
             id="header"
         >
             <Toolbar>

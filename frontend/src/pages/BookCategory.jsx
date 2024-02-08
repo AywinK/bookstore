@@ -26,6 +26,7 @@ const BookCategory = () => {
                 margin: "20px auto",
                 display: "flex",
                 flexDirection: "column",
+                alignItems: "center",
                 gap: "20px",
                 "& > *": {
                     flex: "1",

@@ -74,9 +74,11 @@ const BookCard = ({ book }) => {
                     gridRow: "1",
                     display: "flex",
                     flexDirection: "column",
+                    justifyContent: "space-between",
                     flex: '1 0 auto',
                     textAlign: "start",
-                    wordBreak: "break-word"
+                    wordBreak: "break-word",
+                    minHeight: "100%",
                 }}>
                     <Typography
                         variant="h5"
@@ -101,7 +103,6 @@ const BookCard = ({ book }) => {
                         }}
                         variant="body2"
                         color="text.secondary"
-                        gutterBottom
                     >
                         {average_ratings}
                         <Rating value={average_ratings} readOnly />
@@ -111,9 +112,26 @@ const BookCard = ({ book }) => {
 
                     <Typography
                         variant="body1"
+                        fontSize="1.75em"
                         color="text.primary"
+                        sx={{
+                            marginTop: "auto",
+                            "&::before": {
+                                content: "'£'",
+                                verticalAlign: "super",
+                                marginRight: "2px",
+                                fontSize: "0.9em",
+                            },
+                            "&::after": {
+                                content: `"${book.price.toFixed(2).split(".")[1] || "00"}"`,
+                                verticalAlign: "super",
+                                marginLeft: "1px",
+                                fontSize: "0.75em",
+                            }
+                        }}
+                        gutterBottom
                     >
-                        £{parseFloat(book.price).toFixed(2)}
+                        {String(book.price).split(".")[0]}
                     </Typography>
                 </CardContent>
 

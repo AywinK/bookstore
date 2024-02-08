@@ -4,15 +4,18 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from './layouts/MainLayout';
 import Collections from "./pages/Collections";
 import BookCategory from "./pages/BookCategory";
+import ScrollToTopOnPageChange from './components/ScrollToTopOnPageChange';
+import CssBaseline from '@mui/material/CssBaseline';
 
 function App() {
 
   return (
-    <div
-      style={{
+    <CssBaseline
+      sx={{
         paddingTop: "72px"
       }}
     >
+      <ScrollToTopOnPageChange />
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="/" element={<Homepage />} />
@@ -22,7 +25,7 @@ function App() {
           </Route>
         </Route>
       </Routes>
-    </div>
+    </CssBaseline>
   )
 }
 
