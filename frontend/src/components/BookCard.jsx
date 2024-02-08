@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { Card, CardMedia, CardContent, Typography, CardActions, Button, Skeleton, useMediaQuery, Rating } from '@mui/material';
+import InfoIcon from '@mui/icons-material/Info';
 import { Link } from 'react-router-dom';
 
 
@@ -13,48 +14,62 @@ const BookCard = ({ book }) => {
     return (
         <>
 
-            <Card sx={{
-                display: "grid",
-                gridTemplateColumns: "1fr 2fr",
-                gridTemplateRows: "4fr 1fr",
-                gap: "10px",
-                aspectRatio: "320 / 220",
-                maxWidth: "600px",
-                padding: "10px",
-                margin: "auto",
-            }}
-                elevation={7}
+            <Card
+                sx={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 2fr",
+                    gridTemplateRows: "4fr 1fr",
+                    gap: "10px",
+                    maxWidth: "600px",
+                    margin: "auto",
+                    width: "100%",
+                    borderRadius: "8px",
+                    "& > *": {
+                        padding: "10px 5px 20px"
+                    }
+                }}
+                elevation={5}
             >
                 {book.imageUrl ? <CardMedia
                     component="img"
                     sx={{
-                        objectFit: 'cover',
-                        gridRow: "1/ span 2",
+                        objectFit: 'contain',
+                        gridRow: "1 / 3",
                         gridColumn: "1",
-                        aspectRatio: "320 / 220"
+                        margin: "auto",
+                        minHeight: "175px",
+                        borderRadius: "16px",
                     }}
-                    width="150px"
-                    image={book.imageUrl}
+                    image={book?.imageUrl}
                     alt={book.book_title}
                 />
                     :
                     (<Skeleton
                         variant="rounded"
+                        sx={{
+                            border: "0.2rem solid red",
+                            gridRow: "1 / 3",
+                            gridColumn: "1",
+                            margin: "auto 5px",
+                            maxHeight: isMobile ? "100px" : "unset",
+                        }}
                     >
                         <CardMedia
                             component="img"
                             sx={{
-                                objectFit: 'cover',
-                                gridRow: "1/ span 2",
+                                objectFit: 'contain',
+                                gridRow: "1 / 3",
                                 gridColumn: "1",
-                                aspectRatio: "320 / 220"
+                                margin: "auto",
+                                minHeight: "175px",
+                                borderRadius: "16px",
                             }}
-                            width="150px"
-                            image={book.imageUrl}
+                            image={book?.imageUrl}
                             alt={book.book_title}
                         />
                     </Skeleton>)
                 }
+
                 <CardContent sx={{
                     gridColumn: "2",
                     gridRow: "1",
@@ -62,12 +77,20 @@ const BookCard = ({ book }) => {
                     flexDirection: "column",
                     flex: '1 0 auto',
                     textAlign: "start",
-                    textOverflow: "ellipsis"
+                    wordBreak: "break-word"
                 }}>
-                    <Typography  variant="h5" component="h2">
+                    <Typography
+                        variant="h5"
+                        component="h2"
+                        fontSize={isMobile ? "1.25em" : "inital"}
+                    >
                         {book.book_title}
                     </Typography>
-                    <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+                    <Typography
+                        variant="subtitle1"
+                        color="text.secondary"
+                        gutterBottom
+                    >
                         {book.author}
                     </Typography>
                     <Typography
@@ -75,7 +98,7 @@ const BookCard = ({ book }) => {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "flex-start",
-
+                            flexWrap: "wrap"
                         }}
                         variant="body2"
                         color="text.secondary"
@@ -87,24 +110,24 @@ const BookCard = ({ book }) => {
                         )
                     </Typography>
 
-                    <Typography variant="body1" color="text.primary">
+                    <Typography
+                        variant="body1"
+                        color="text.primary"
+                    >
                         £{parseFloat(book.price).toFixed(2)}
                     </Typography>
                 </CardContent>
+
                 <CardActions sx={{
-                    gridColumn: "1/-1",
-                    gridRow: "2",
-                    justifyContent: "space-between",
-                    alignItems: "flex-end",
-                    display: "grid",
-                    gridTemplateRows: "1fr",
-                    gridTemplateColumns: "1fr 2fr",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between"
                 }}>
-                    <Button size="small" color="secondary" variant="contained">
+                    <Button size={isMobile ? "small" : "large"} color="secondary" variant="contained">
                         Add to Basket
                     </Button>
-                    <Button component={Link} size="small" color="primary" to={`/books/${book_id}`}>
-                        More Information
+                    <Button component={Link} color="primary" to={`/books/${book_id}`}>
+                        <InfoIcon fontSize={isMobile ? "medium" : "large"} />
                     </Button>
                 </CardActions>
             </Card>

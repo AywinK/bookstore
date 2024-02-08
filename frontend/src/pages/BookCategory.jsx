@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { CircularProgress } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 import BookCard from "../components/BookCard";
+import { Container } from "@mui/material";
 
 const BookCategory = () => {
 
@@ -19,18 +20,20 @@ const BookCategory = () => {
     console.log(booksData);
 
     return (
-        <div
-        style={{
-            margin: "20px auto",
-            display: "flex",
-            justifyContent: "space-evenly",
-            alignItems: "flex-start",
-            flexWrap: "wrap",
-            gap: "20px",
-        }}
+        <Container
+        component="main"
+            style={{
+                margin: "20px auto",
+                display: "flex",
+                flexDirection: "column",
+                gap: "20px",
+                "& > *": {
+                    flex: "1",
+                }
+            }}
         >
             {booksData ? booksData.map(book => <BookCard key={book.book_id} book={book} />) : <CircularProgress />}
-        </div>
+        </Container>
     )
 }
 
