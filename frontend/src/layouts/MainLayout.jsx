@@ -5,15 +5,18 @@ import Footer from "../components/Footer";
 const MainLayout = () => {
 
     return (
-        <main
-        style={{
-            marginTop: "80px",
-        }}
-        >
+        <>
             <Header />
-            <Outlet />
+
+            <main
+                style={{
+                    marginTop: "80px",
+                }}>
+                <Outlet />
+            </main>
+
             <Footer />
-        </main>
+        </>
     )
 }
 
