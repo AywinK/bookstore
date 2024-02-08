@@ -1,0 +1,53 @@
+{
+    "aboutLinks": [
+      {
+        "link": "/about-us",
+        "text": "About Us"
+      },
+      {
+        "link": "/sitemap",
+        "text": "Sitemap"
+      }
+    ],
+    "legalLinks": [
+      {
+        "link": "/privacy-notice",
+        "text": "Privacy Notice"
+      },
+      {
+        "link": "/terms-and-conditions",
+        "text": "Terms and Conditions"
+      },
+      {
+        "link": "/accessibility",
+        "text": "Accessibility"
+      },
+      {
+        "link": "/cookie-policy",
+        "text": "Cookie Policy"
+      }
+    ],
+    "supportLinks": [
+      {
+        "link": "/faq",
+        "text": "Frequently Asked Questions"
+      },
+      {
+        "link": "/delivery",
+        "text": "Delivery Information"
+      },
+      {
+        "link": "/click-and-collect",
+        "text": "Click and Collect"
+      },
+      {
+        "link": "/returns",
+        "text": "Returns Policy"
+      },
+      {
+        "link": "/contact",
+        "text": "Contact Us"
+      }
+    ]
+  }
+  

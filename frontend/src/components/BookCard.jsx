@@ -18,7 +18,7 @@ const BookCard = ({ book }) => {
                 gridTemplateColumns: "1fr 2fr",
                 gridTemplateRows: "4fr 1fr",
                 gap: "10px",
-                aspectRatio: "170/193",
+                aspectRatio: "320 / 220",
                 maxWidth: "600px",
                 padding: "10px",
                 margin: "auto",
@@ -31,7 +31,7 @@ const BookCard = ({ book }) => {
                         objectFit: 'cover',
                         gridRow: "1/ span 2",
                         gridColumn: "1",
-                        // aspectRatio: "148/193"
+                        aspectRatio: "320 / 220"
                     }}
                     width="150px"
                     image={book.imageUrl}
@@ -47,7 +47,7 @@ const BookCard = ({ book }) => {
                                 objectFit: 'cover',
                                 gridRow: "1/ span 2",
                                 gridColumn: "1",
-                                // aspectRatio: "148/193"
+                                aspectRatio: "320 / 220"
                             }}
                             width="150px"
                             image={book.imageUrl}
