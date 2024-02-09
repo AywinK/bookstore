@@ -105,7 +105,7 @@ const BookCard = ({ book }) => {
                     >
                         {average_ratings}
                         <Rating value={average_ratings} readOnly />
-                        ({book.count_ratings}
+                        ({book.count_ratings.toLocaleString()}
                         )
                     </Typography>
 
