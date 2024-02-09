@@ -139,7 +139,7 @@ const BookCard = ({ book }) => {
                     alignItems: "center",
                     justifyContent: "space-between",
                     "& > *": {
-                        flex: "1",
+                        flex: isMobile ? "1" : "",
                     },
                 }}>
                     <Button size={isMobile ? "small" : "large"} color="secondary" variant="contained">
