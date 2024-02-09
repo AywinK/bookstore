@@ -138,7 +138,10 @@ const BookCard = ({ book }) => {
                 <CardActions sx={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "space-between"
+                    justifyContent: "space-between",
+                    "& > *": {
+                        flex: "1",
+                    },
                 }}>
                     <Button size={isMobile ? "small" : "large"} color="secondary" variant="contained">
                         Add to Basket
