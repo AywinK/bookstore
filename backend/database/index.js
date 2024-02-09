@@ -16,10 +16,25 @@ import { Sequelize } from "sequelize";
 //     }
 // );
 
+// const sequelize = new Sequelize(
+//     "aywin_db",
+//     "SA",
+//     "123qweQWE!",
+//     {
+//         host: "localhost",
+//         dialect: "mssql",
+//         dialectOptions: {
+//             options: {
+//                 encrypt: true,
+//             },
+//         },
+//     }
+// );
+
 const sequelize = new Sequelize(
     "aywin_db",
     "SA",
-    "123qweQWE!",
+    "yourStrong(!)Password",
     {
         host: "localhost",
         dialect: "mssql",
