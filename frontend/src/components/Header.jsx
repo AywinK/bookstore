@@ -70,16 +70,6 @@ const Header = () => {
     return (
         <HideHeaderOnScroll>
             <AppBar position="fixed"
-                // sx={{
-                //     paddingTop: "5px",
-                //     minWidth: "350px",
-                //     maxWidth: "100%",
-                //     margin: "0 auto",
-                //     position: "absolute",
-                //     top: "0px",
-                //     left: "0px",
-                //     right: "0px",
-                // }}
                 id="header"
             >
                 <Toolbar>
@@ -131,7 +121,15 @@ const Header = () => {
 
                     {/* Basket Icon */}
                     <IconButton size="large" color="inherit">
-                        <Badge badgeContent={4} color="error">
+                        <Badge 
+                        sx={{
+                            "& .MuiBadge-badge": {
+                                fontSize: "0.8rem",
+                            }
+                        }}
+                        badgeContent={4} 
+                        color="error"
+                        >
                             <ShoppingCartIcon />
                         </Badge>
                     </IconButton>
