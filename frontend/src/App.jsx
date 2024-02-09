@@ -10,11 +10,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 function App() {
 
   return (
-    <CssBaseline
-      sx={{
-        paddingTop: "72px"
-      }}
-    >
+    <CssBaseline>
       <ScrollToTopOnPageChange />
       <Routes>
         <Route path="/" element={<MainLayout />}>
