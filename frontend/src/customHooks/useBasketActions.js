@@ -5,7 +5,7 @@ import { BasketActionTypes } from "../helperFunctions/BasketActionTypes";
 const useBasketActions = () => {
     const { dispatch } = useContext(BasketContext);
 
-    const handleAddBook = (book, quantity) => dispatch({
+    const handleAddBook = (book, quantity = 1) => dispatch({
         type: BasketActionTypes.ADD_ITEM,
         payload: {
             book,
@@ -20,7 +20,7 @@ const useBasketActions = () => {
         }
     });
 
-    const handleUpdateBookQuantity = (book, quantity) => dispatch({
+    const handleUpdateBookQuantity = (book, quantity = 1) => dispatch({
         type: BasketActionTypes.UPDATE_QUANTITY,
         payload: {
             book,
