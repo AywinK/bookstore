@@ -75,7 +75,6 @@ const BookCard = ({ book }) => {
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
-                    flex: '1 0 auto',
                     textAlign: "start",
                     wordBreak: "break-word",
                     minHeight: "100%",
