@@ -1,12 +1,11 @@
-import { AppBar, Toolbar, IconButton, Badge } from "@mui/material";
+import { AppBar, Toolbar, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import HideHeaderOnScroll from "./HideHeaderOnScroll";
-import { Link } from "react-router-dom";
+import BasketButton from "./BasketButton";
 
 const Header = () => {
   const renderOption = (props, option) => (
@@ -140,24 +139,7 @@ const Header = () => {
           </div>
 
           {/* Basket Icon */}
-          <Link
-            style={{ textDecoration: "none", color: "inherit" }}
-            to="/basket"
-          >
-            <IconButton size="large" color="inherit">
-              <Badge
-                sx={{
-                  "& .MuiBadge-badge": {
-                    fontSize: "0.8rem",
-                  },
-                }}
-                badgeContent={4}
-                color="error"
-              >
-                <ShoppingCartIcon />
-              </Badge>
-            </IconButton>
-          </Link>
+          <BasketButton />
         </Toolbar>
       </AppBar>
     </HideHeaderOnScroll>

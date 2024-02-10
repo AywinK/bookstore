@@ -38,7 +38,7 @@ const BasketBookCard = ({ book }) => {
       </BookCardContent>
 
       <BookCardActions>
-        <AddToBasketButton />
+        <AddToBasketButton book={book} />
         <BookMoreInfoButton book_id={book_id} />
       </BookCardActions>
     </StandardCardLayout>
