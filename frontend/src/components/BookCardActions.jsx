@@ -9,7 +9,7 @@ const BookCardActions = ({ children, isMobile }) => {
         alignItems: "center",
         justifyContent: "space-between",
         "& > *": {
-          flex: isMobile ? "1" : "",
+          flex: isMobile ? "" : "", //add 1 for mobile if any bugs
         },
       }}
     >

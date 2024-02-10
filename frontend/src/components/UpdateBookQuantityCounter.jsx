@@ -1,11 +1,13 @@
 import { useState } from "react";
-import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import Stack from "@mui/material/Stack";
 
-const UpdateBookQuantityCounter = () => {
+// eslint-disable-next-line react/prop-types
+const UpdateBookQuantityCounter = ({ isMobile }) => {
+  console.log(isMobile);
   const [count, setCount] = useState(0);
 
   const handleIncrement = () => {
@@ -24,22 +26,32 @@ const UpdateBookQuantityCounter = () => {
   };
 
   return (
-    <Box display="flex" alignItems="center">
-      <Button onClick={handleDecrement} variant="contained" sx={{borderRadius: "50% 0% 0% 50%"}} color="primary">
-        <RemoveIcon />
-      </Button>
+    <Stack direction="row">
+      <IconButton
+        onClick={handleDecrement}
+        size=""
+        variant="contained"
+        color="primary"
+      >
+        <RemoveIcon fontSize={isMobile ? "medium" : "large"} />
+      </IconButton>
       <TextField
-        type="number"
+        type="text"
         variant="outlined"
         value={count}
+        sx={{maxWidth: "60px"}}
+        inputProps={{ sx: { textAlign: "center" } }}
         onChange={handleInputChange}
-        inputProps={{ min: 0 }}
-        style={{ margin: "0 8px", width: "60px", textAlign: "center" }}
       />
-      <Button onClick={handleIncrement} variant="contained" sx={{borderRadius: "0% 50% 50% 0%"}} color="primary">
-        <AddIcon />
-      </Button>
-    </Box>
+      <IconButton
+        onClick={handleIncrement}
+        size=""
+        variant="contained"
+        color="primary"
+      >
+        <AddIcon fontSize={isMobile ? "medium" : "large"} />
+      </IconButton>
+    </Stack>
   );
 };
 

@@ -1,25 +1,19 @@
 /* eslint-disable react/prop-types */
 import DeleteIcon from "@mui/icons-material/Delete";
-import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 import { useBasketActions } from "../customHooks/useBasketActions";
 
 const DeleteItemInBasket = ({ book, isMobile }) => {
   const { handleRemoveBook } = useBasketActions();
 
   return (
-    <Button
-      variant="contained"
+    <IconButton
       color="error"
-      sx={{
-        maxWidth: "20px",
-        aspectRatio: "1/1",
-        borderRadius: "50%",
-      }}
       size="small"
       onClick={() => handleRemoveBook(book)}
     >
-      <DeleteIcon fontSize="medium" />
-    </Button>
+      <DeleteIcon fontSize={isMobile? "medium" : "large"} />
+    </IconButton>
   );
 };
 
