@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Card from "@mui/material/Card";
 
