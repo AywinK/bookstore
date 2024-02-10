@@ -18,7 +18,7 @@ const BookPage = () => {
   return (
     <Container>
       <h1>Work In Progress</h1>
-      {bookData ? JSON.stringify(bookData) : <CircularProgress />}
+      <p>{bookData ? JSON.stringify(bookData) : <CircularProgress />}</p>
     </Container>
   );
 };

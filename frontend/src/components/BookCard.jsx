@@ -41,7 +41,7 @@ const BookCard = ({ book }) => {
                         borderRadius: "16px",
                     }}
                     image={book?.imageUrl}
-                    alt={book.book_title}
+                    alt={book_title}
                 />
                     :
                     (<Skeleton
@@ -64,7 +64,7 @@ const BookCard = ({ book }) => {
                                 borderRadius: "16px",
                             }}
                             image={book?.imageUrl}
-                            alt={book.book_title}
+                            alt={book_title}
                         />
                     </Skeleton>)
                 }
@@ -84,14 +84,14 @@ const BookCard = ({ book }) => {
                         component="h2"
                         fontSize={isMobile ? "1.25em" : "inital"}
                     >
-                        {book.book_title}
+                        {book_title}
                     </Typography>
                     <Typography
                         variant="subtitle1"
                         color="text.secondary"
                         gutterBottom
                     >
-                        by {book.author} | Publisher: {publisher} ({publication_year})
+                        by {author} | Publisher: {publisher} ({publication_year})
                     </Typography>
                     <Typography
                         sx={{
@@ -104,7 +104,7 @@ const BookCard = ({ book }) => {
                         color="text.secondary"
                     >
                         {average_ratings}
-                        <Rating value={average_ratings} readOnly />
+                        <Rating precision={0.1} value={average_ratings} readOnly />
                         ({book.count_ratings.toLocaleString()}
                         )
                     </Typography>
@@ -122,7 +122,7 @@ const BookCard = ({ book }) => {
                                 fontSize: "0.9em",
                             },
                             "&::after": {
-                                content: `"${book.price.toFixed(2).split(".")[1] || "00"}"`,
+                                content: `"${price.toFixed(2).split(".")[1] || "00"}"`,
                                 verticalAlign: "super",
                                 marginLeft: "1px",
                                 fontSize: "0.75em",
@@ -130,7 +130,7 @@ const BookCard = ({ book }) => {
                         }}
                         gutterBottom
                     >
-                        {String(book.price).split(".")[0]}
+                        {String(price).split(".")[0]}
                     </Typography>
                 </CardContent>
 
