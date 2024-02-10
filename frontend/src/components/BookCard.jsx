@@ -104,7 +104,7 @@ const BookCard = ({ book }) => {
                         color="text.secondary"
                     >
                         {average_ratings}
-                        <Rating value={average_ratings} readOnly />
+                        <Rating precision={0.1} value={average_ratings} readOnly />
                         ({book.count_ratings.toLocaleString()}
                         )
                     </Typography>
