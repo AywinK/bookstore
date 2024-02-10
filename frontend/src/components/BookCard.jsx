@@ -14,6 +14,11 @@ import {
 import InfoIcon from "@mui/icons-material/Info";
 import { Link } from "react-router-dom";
 import BookImageCardMedia from "./BookImageCardMedia";
+import BookCardContent from "./BookCardContent";
+import CardContentBookRatingsInfo from "./CardContentBookRatingsInfo";
+import BookCardContentAuthorPublisher from "./BookCardContentAuthorPublisher";
+import BookCardContentPrice from "./BookCardContentPrice";
+import BookCardContentTitle from "./BookCardContentTitle";
 
 const BookCard = ({ book }) => {
   const isMobile = useMediaQuery("(max-width: 688px)");
@@ -21,10 +26,10 @@ const BookCard = ({ book }) => {
   const {
     book_id,
     book_title,
-    isbn,
+    // isbn,
     price,
-    book_description,
-    stock_quantity,
+    // book_description,
+    // stock_quantity,
     average_ratings,
     count_ratings,
     author,
@@ -57,67 +62,22 @@ const BookCard = ({ book }) => {
           book_title={book_title}
         />
 
-        <CardContent
-          sx={{
-            gridColumn: "2",
-            gridRow: "1",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            textAlign: "start",
-            wordBreak: "break-word",
-            minHeight: "100%",
-          }}
-        >
-          <Typography
-            variant="h5"
-            component="h2"
-            fontSize={isMobile ? "1.25em" : "inital"}
-          >
-            {book_title}
-          </Typography>
-          <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-            by {author} | Publisher: {publisher} ({publication_year})
-          </Typography>
-          <Typography
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start",
-              flexWrap: "wrap",
-            }}
-            variant="body2"
-            color="text.secondary"
-          >
-            {average_ratings}
-            <Rating precision={0.1} value={average_ratings} readOnly />(
-            {book.count_ratings.toLocaleString()})
-          </Typography>
+        <BookCardContent>
+          <BookCardContentTitle isMobile={isMobile} book_title={book_title} />
 
-          <Typography
-            variant="body1"
-            fontSize="1.75em"
-            color="text.primary"
-            sx={{
-              marginTop: "auto",
-              "&::before": {
-                content: "'£'",
-                verticalAlign: "super",
-                marginRight: "2px",
-                fontSize: "0.9em",
-              },
-              "&::after": {
-                content: `"${price.toFixed(2).split(".")[1] || "00"}"`,
-                verticalAlign: "super",
-                marginLeft: "1px",
-                fontSize: "0.75em",
-              },
-            }}
-            gutterBottom
-          >
-            {String(price).split(".")[0]}
-          </Typography>
-        </CardContent>
+          <BookCardContentAuthorPublisher
+            author={author}
+            publisher={publisher}
+            publication_year={publication_year}
+          />
+
+          <CardContentBookRatingsInfo
+            count_ratings={count_ratings}
+            average_ratings={average_ratings}
+          />
+
+          <BookCardContentPrice price={price} />
+        </BookCardContent>
 
         <CardActions
           sx={{
