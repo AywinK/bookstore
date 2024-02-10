@@ -6,6 +6,7 @@ import Collections from "./pages/Collections";
 import BookCategory from "./pages/BookCategory";
 import ScrollToTopOnPageChange from './components/ScrollToTopOnPageChange';
 import CssBaseline from '@mui/material/CssBaseline';
+import BookPage from "./pages/BookPage";
 
 function App() {
 
@@ -15,6 +16,10 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="/" element={<Homepage />} />
+          <Route path="/books">
+            {/* <Route path="/books" element={?????}/> */}
+            <Route path=":book_id" element={<BookPage />} />
+          </Route>
           <Route path="/collections" >
             <Route path="/collections/" element={<Collections />} />
             <Route path=":category_name" element={<BookCategory />} />

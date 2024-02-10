@@ -125,7 +125,7 @@ const getBookById = async (req, res) => {
             ],
         });
 
-        !book ? res.status(404).send("Book not found"):res.status(200).json([book].map(el => new BookClass(el.book_id, el.book_title, el.isbn, el.publication_year, el.price, el.book_description, el.stock_quantity, el.average_ratings, el.count_ratings, el.Author.full_name, el.Publisher.publisher_name)));
+        !book ? res.status(404).send("Book not found"):res.status(200).json( new BookClass(book.book_id, book.book_title, book.isbn, book.publication_year, book.price, book.book_description, book.stock_quantity, book.average_ratings, book.count_ratings, book.Author.full_name, book.Publisher.publisher_name));
 
 
     } catch (err) {
