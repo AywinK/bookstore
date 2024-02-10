@@ -107,4 +107,31 @@ const getAllBooksByCategoryName = async (req, res) => {
     }
 }
 
-export { getAllBooks, getFiveBooksBySearchQuery, getAllBooksByCategoryName };
+const getBookById = async (req, res) => {
+    try {
+
+        const book_id = Number(req.params.book_id)
+
+        const book = await Book.findByPk(book_id,{
+            include: [
+                {
+                    model: Author,
+                    attributes: ["full_name"],
+                },
+                {
+                    model: Publisher,
+                    attributes: ["publisher_name"],
+                }
+            ],
+        });
+
+        !book ? res.status(404).send("Book not found"):res.status(200).json([book].map(el => new BookClass(el.book_id, el.book_title, el.isbn, el.publication_year, el.price, el.book_description, el.stock_quantity, el.average_ratings, el.count_ratings, el.Author.full_name, el.Publisher.publisher_name)));
+
+
+    } catch (err) {
+        console.error("Error getting book by book_id", err);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
+export { getAllBooks, getFiveBooksBySearchQuery, getAllBooksByCategoryName, getBookById };
