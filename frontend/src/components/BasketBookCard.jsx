@@ -5,10 +5,10 @@ import BookCardContentAuthorPublisher from "./BookCardContentAuthorPublisher";
 import BookCardContentPrice from "./BookCardContentPrice";
 import BookCardContentTitle from "./BookCardContentTitle";
 import BookCardActions from "./BookCardActions";
-import AddToBasketButton from "./AddToBasketButton";
 import StandardCardLayout from "./StandardCardLayout";
 import DispatchInfoCardContent from "./DispatchInfoCardContent";
 import DeleteItemInBasket from "./DeleteItemInBasket";
+import UpdateBookQuantityCounter from "./UpdateBookQuantityCounter";
 
 const BasketBookCard = ({ book }) => {
   const {
@@ -38,7 +38,7 @@ const BasketBookCard = ({ book }) => {
       </BookCardContent>
 
       <BookCardActions>
-        <AddToBasketButton book={book} />
+        <UpdateBookQuantityCounter book={book} />
         <DeleteItemInBasket book={book} />
       </BookCardActions>
     </StandardCardLayout>

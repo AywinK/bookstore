@@ -3,12 +3,19 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
 import { useBasketActions } from "../customHooks/useBasketActions";
 
-const DeleteItemInBasket = ({ book }) => {
+const DeleteItemInBasket = ({ book, isMobile }) => {
   const { handleRemoveBook } = useBasketActions();
 
   return (
-    <Button onClick={() => handleRemoveBook(book)}>
-      <DeleteIcon />
+    <Button
+      variant="contained"
+      sx={{
+        maxWidth: isMobile ? "1em" : "",
+      }}
+      size="small"
+      onClick={() => handleRemoveBook(book)}
+    >
+      <DeleteIcon fontSize="large" />
     </Button>
   );
 };
