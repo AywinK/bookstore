@@ -27,28 +27,18 @@ const UpdateBookQuantityCounter = ({ isMobile }) => {
 
   return (
     <Stack direction="row">
-      <IconButton
-        onClick={handleDecrement}
-        size=""
-        variant="contained"
-        color="primary"
-      >
+      <IconButton onClick={handleDecrement} size="large" color="primary">
         <RemoveIcon fontSize={isMobile ? "medium" : "large"} />
       </IconButton>
       <TextField
         type="text"
         variant="outlined"
         value={count}
-        sx={{maxWidth: "60px"}}
+        sx={{ maxWidth: "60px" }}
         inputProps={{ sx: { textAlign: "center" } }}
         onChange={handleInputChange}
       />
-      <IconButton
-        onClick={handleIncrement}
-        size=""
-        variant="contained"
-        color="primary"
-      >
+      <IconButton onClick={handleIncrement} size="large" color="primary">
         <AddIcon fontSize={isMobile ? "medium" : "large"} />
       </IconButton>
     </Stack>
