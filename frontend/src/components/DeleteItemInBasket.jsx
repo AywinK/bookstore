@@ -9,13 +9,16 @@ const DeleteItemInBasket = ({ book, isMobile }) => {
   return (
     <Button
       variant="contained"
+      color="error"
       sx={{
-        maxWidth: isMobile ? "1em" : "",
+        maxWidth: "20px",
+        aspectRatio: "1/1",
+        borderRadius: "50%",
       }}
       size="small"
       onClick={() => handleRemoveBook(book)}
     >
-      <DeleteIcon fontSize="large" />
+      <DeleteIcon fontSize="medium" />
     </Button>
   );
 };
