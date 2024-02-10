@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
 import { useBasketActions } from "../customHooks/useBasketActions";
