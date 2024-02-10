@@ -7,12 +7,29 @@ import { Children, isValidElement, cloneElement } from "react";
 const StandardCardLayout = ({ children }) => {
   const isMobile = useMediaQuery("(max-width: 688px)");
 
-  const childrenWithProps = Children.map(children, (child) => {
-    if (isValidElement(child)) {
-      return cloneElement(child, { isMobile: isMobile });
-    }
-    return child;
-  });
+  const renderChildrenWithProps = (children) => {
+    return Children.map(children, (child) => {
+      if (isValidElement(child)) {
+        // Check if the child has nested children
+        if (child.props.children) {
+          // Recursively render nested children with props
+          const nestedChildrenWithProps = renderChildrenWithProps(
+            child.props.children
+          );
+          // Clone the child element and pass the isMobile prop along with nested children
+          return cloneElement(
+            child,
+            { isMobile: isMobile },
+            nestedChildrenWithProps
+          );
+        } else {
+          // Clone the child element and pass the isMobile prop
+          return cloneElement(child, { isMobile: isMobile });
+        }
+      }
+      return child;
+    });
+  };
 
   return (
     <Card
@@ -31,7 +48,7 @@ const StandardCardLayout = ({ children }) => {
       }}
       elevation={5}
     >
-      {childrenWithProps}
+      {renderChildrenWithProps(children)}
     </Card>
   );
 };
