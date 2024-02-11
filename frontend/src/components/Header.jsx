@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, IconButton } from "@mui/material";
+import { AppBar, Toolbar, IconButton, List, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
@@ -9,35 +9,33 @@ import BasketButton from "./BasketButton";
 
 const Header = () => {
   const renderOption = (props, option) => (
-    <li
+    <List
       {...props}
-      style={{
-        display: "flex",
-        alignItems: "center",
-      }}
     >
-      <p
-        style={{
+      <Typography
+        variant="body2"
+        sx={{
           wordBreak: "break-word",
           width: "80%",
         }}
       >
         {option.label}
-      </p>
+      </Typography>
       {option.label !== "Start typing to search for books" && (
         <Button
-          variant="outlined"
-          style={{
-            justifySelf: "flex-end",
-          }}
-          onTouchEnd={() => {
+          onTouchEnd={(e) => {
             // Handle button click here
+            e.preventDefault();
+            e.stopPropagation();
             console.table(option);
             setSearchResults([]);
             setKeyword("");
           }}
-          onClick={() => {
+          onMouseUp={(e) => {
+            console.log(e)
             // Handle button click here
+            e.preventDefault();
+            e.stopPropagation();
             console.table(option);
             setSearchResults([]);
             setKeyword("");
@@ -46,13 +44,11 @@ const Header = () => {
           Add to Basket
         </Button>
       )}
-    </li>
+    </List>
   );
 
   const [keyword, setKeyword] = useState("");
-  const [searchResults, setSearchResults] = useState([
-    { label: "Start typing to search for books" },
-  ]);
+  const [searchResults, setSearchResults] = useState([]);
   const [selectedValue, setSelectedValue] = useState("");
 
   console.log(searchResults);
@@ -96,8 +92,9 @@ const Header = () => {
           </IconButton>
 
           {/* Search Bar with Autocomplete */}
-          <div style={{ flexGrow: 1 }}>
             <Autocomplete
+            sx={{flexGrow: "1"}}
+              groupBy={option => option?.author || option.publisher}
               getOptionDisabled={(option) =>
                 option.label === "Start typing to search for books"
               }
@@ -136,7 +133,6 @@ const Header = () => {
                 />
               )}
             />
-          </div>
 
           {/* Basket Icon */}
           <BasketButton />

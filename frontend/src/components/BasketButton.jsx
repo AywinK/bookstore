@@ -11,6 +11,7 @@ const BasketButton = () => {
       <IconButton size="large" color="inherit">
         <Badge
           sx={{
+            ml: 2,
             "& .MuiBadge-badge": {
               fontSize: "0.8rem",
             },
