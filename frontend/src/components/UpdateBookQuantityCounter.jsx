@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import IconButton from "@mui/material/IconButton";
 import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
@@ -9,52 +9,64 @@ import { useBasketActions } from "../customHooks/useBasketActions";
 // eslint-disable-next-line react/prop-types
 const UpdateBookQuantityCounter = ({ isMobile, book }) => {
 
-  const textFieldRef = useRef(null);
+  // eslint-disable-next-line react/prop-types
+  const { quantity, stock_quantity } = book;
+
+  const quantityTextFieldRef = useRef(quantity);
 
   const { handleUpdateBookQuantity } = useBasketActions();
 
-  const [currentQuantity, setCurrentQuantity] = useState(book?.quantity || 1);
+  useEffect(() => {
+    quantityTextFieldRef.current.value = quantity;
+  }, [quantity])
+
 
   const handleIncrement = () => {
-    setCurrentQuantity(book.quantity);
-    handleUpdateBookQuantity(book, Math.min(book?.quantity + 1, book?.stock_quantity))
+    handleUpdateBookQuantity(book, Math.min(quantity + 1, stock_quantity, 999)); // prevent overflow and ensure in stock
   };
 
   const handleDecrement = () => {
-    setCurrentQuantity(book.quantity);
-    handleUpdateBookQuantity(book, Math.max(book?.quantity - 1, 1))
+    handleUpdateBookQuantity(book, Math.max(quantity - 1, 1)); // minimum quantity before modifying basket
 
   };
 
   const handleInputChange = (e) => {
     const value = parseInt(e.target.value);
 
-    if (e.target.value === "") setCurrentQuantity(null);
     if (!isNaN(value) && value > 0) {
-      setCurrentQuantity(Math.min(value, book?.stock_quantity));
-      handleUpdateBookQuantity(book, Math.min(value, book?.stock_quantity));
+      handleUpdateBookQuantity(book, Math.min(value, stock_quantity)); // ensure in stock validation
     }
   };
 
   return (
     <Stack direction="row">
+
+      {/* Decrement Button */}
       <IconButton onClick={handleDecrement} size="large" color="primary">
         <RemoveIcon fontSize={isMobile ? "medium" : "large"} />
       </IconButton>
+
+      {/* Update Quantity Button */}
       <TextField
-        onBlur={() => setCurrentQuantity(() => book?.quantity)}
-        inputRef={textFieldRef}
-        onFocus={() => textFieldRef.current.select()}
+        inputRef={quantityTextFieldRef}
+        onFocus={() => quantityTextFieldRef.current.select()} // reduce step needed to update quantity in basket
+        onBlur={(e) => e.target.value = quantity}
+        onKeyDown={e => (!/^\d+$/.test(e.key) && //prevent non-digit input
+          !["Backspace", "ArrowLeft", "ArrowRight"].some(key => key === e.key) // allow moving cursor and removing numbers
+          && e.preventDefault())}
         type="text"
         variant="outlined"
-        value={currentQuantity}
+        defaultValue={quantity}
         sx={{ maxWidth: "60px" }}
-        inputProps={{ sx: { textAlign: "center" }, inputMode: "numeric" }}
+        inputProps={{ sx: { textAlign: "center" }, inputMode: "numeric", pattern: "[0-9]*" }} // brings up numeric only keyboards on mobile devices
         onChange={handleInputChange}
       />
+
+      {/* Increment Button */}
       <IconButton onClick={handleIncrement} size="large" color="primary">
         <AddIcon fontSize={isMobile ? "medium" : "large"} />
       </IconButton>
+
     </Stack>
   );
 };
