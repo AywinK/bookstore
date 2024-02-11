@@ -1,16 +1,10 @@
-import { useEffect, useState } from "react";
 import BasketBookCard from "../components/BasketBookCard";
 import { Container } from "@mui/material";
+import { useBasket } from "../customHooks/useBasket";
 
 const Basket = () => {
-  const [data, setData] = useState(null);
 
-  useEffect(() => {
-    fetch("http://localhost:3001/books/")
-      .then((res) => res.json())
-      .then((data) => setData(data))
-      .catch((err) => console.error(err));
-  }, []);
+  const { basket } = useBasket();
 
   return (
     <Container
@@ -21,9 +15,12 @@ const Basket = () => {
       }}
     >
       <h1>Basket page</h1>
-      {data?.map((book) => (
+      {basket.length ?
+       basket?.map((book) => (
         <BasketBookCard key={book?.book_id} book={book} />
-      ))}
+      )):
+      <p>Basket is empty!</p>
+    }
     </Container>
   );
 };
