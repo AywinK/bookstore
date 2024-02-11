@@ -30,13 +30,20 @@ const UpdateBookQuantityCounter = ({ isMobile, book }) => {
 
   };
 
-  const handleInputChange = (e) => {
+  const handleQuantityInputChange = (e) => {
     const value = parseInt(e.target.value);
-
     if (!isNaN(value) && value > 0) {
-      handleUpdateBookQuantity(book, Math.min(value, stock_quantity)); // ensure in stock validation
+      handleUpdateBookQuantity(book, Math.min(value, stock_quantity, 999)); // ensure in stock validation and prevent text overflow
     }
   };
+
+  const handleQuantityInputFocus = () => quantityTextFieldRef.current.select(); // reduce step needed to update quantity in basket
+
+  const handleQuantityInputKeyDown = e => (!/^\d+$/.test(e.key) && //prevent non-digit input
+    !["Backspace", "ArrowLeft", "ArrowRight"].some(key => key === e.key) // allow moving cursor and removing numbers
+    && e.preventDefault());
+
+  const handleQuantityInputBlur = e => e.target.value = quantity; // display latest value
 
   return (
     <Stack direction="row">
@@ -49,17 +56,15 @@ const UpdateBookQuantityCounter = ({ isMobile, book }) => {
       {/* Update Quantity Button */}
       <TextField
         inputRef={quantityTextFieldRef}
-        onFocus={() => quantityTextFieldRef.current.select()} // reduce step needed to update quantity in basket
-        onBlur={(e) => e.target.value = quantity}
-        onKeyDown={e => (!/^\d+$/.test(e.key) && //prevent non-digit input
-          !["Backspace", "ArrowLeft", "ArrowRight"].some(key => key === e.key) // allow moving cursor and removing numbers
-          && e.preventDefault())}
+        onFocus={handleQuantityInputFocus}
+        onBlur={handleQuantityInputBlur}
+        onKeyDown={handleQuantityInputKeyDown}
         type="text"
         variant="outlined"
-        defaultValue={quantity}
+        value={quantity}
         sx={{ maxWidth: "60px" }}
         inputProps={{ sx: { textAlign: "center" }, inputMode: "numeric", pattern: "[0-9]*" }} // brings up numeric only keyboards on mobile devices
-        onChange={handleInputChange}
+        onChange={handleQuantityInputChange}
       />
 
       {/* Increment Button */}
