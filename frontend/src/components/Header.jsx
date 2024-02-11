@@ -1,11 +1,11 @@
-import { AppBar, Toolbar, IconButton, List, Typography } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import { AppBar, Toolbar, List, Typography } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import HideHeaderOnScroll from "./HideHeaderOnScroll";
 import BasketButton from "./BasketButton";
+import HamburgerMenuButton from "./HamburgerMenuButton";
 
 const Header = () => {
   const renderOption = (props, option) => (
@@ -81,58 +81,50 @@ const Header = () => {
       <AppBar position="fixed" id="header">
         <Toolbar>
           {/* Hamburger Menu Icon */}
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <HamburgerMenuButton />
 
           {/* Search Bar with Autocomplete */}
-            <Autocomplete
-            sx={{flexGrow: "1"}}
-              groupBy={option => option?.author || option.publisher}
-              getOptionDisabled={(option) =>
-                option.label === "Start typing to search for books"
-              }
-              renderOption={renderOption}
-              defaultValue={"Search by title, ISBN, author or publisher"}
-              freeSolo
-              id="search-bar"
-              value={selectedValue}
-              onChange={(e, val) => setSelectedValue(val)}
-              inputValue={keyword}
-              onInputChange={(e, val) => {
-                setKeyword(val);
-              }}
-              onClose={() => setKeyword("")}
-              options={searchResults}
-              filterOptions={(x) => x}
-              getOptionLabel={(option) => option?.label || ""}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Search by title, ISBN, author or publisher"
-                  variant="filled"
-                  fullWidth
-                  InputLabelProps={{
-                    ...params.InputLabelProps,
-                    style: {
-                      color: "whitesmoke",
-                    },
-                  }}
-                  InputProps={{
-                    ...params.InputProps,
-                    style: {
-                      color: "whitesmoke",
-                    },
-                  }}
-                />
-              )}
-            />
+          <Autocomplete
+            sx={{ flexGrow: "1" }}
+            groupBy={option => option?.author || option.publisher}
+            getOptionDisabled={(option) =>
+              option.label === "Start typing to search for books"
+            }
+            renderOption={renderOption}
+            defaultValue={"Search by title, ISBN, author or publisher"}
+            freeSolo
+            id="search-bar"
+            value={selectedValue}
+            onChange={(e, val) => setSelectedValue(val)}
+            inputValue={keyword}
+            onInputChange={(e, val) => {
+              setKeyword(val);
+            }}
+            onClose={() => setKeyword("")}
+            options={searchResults}
+            filterOptions={(x) => x}
+            getOptionLabel={(option) => option?.label || ""}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Search by title, ISBN, author or publisher"
+                variant="filled"
+                fullWidth
+                InputLabelProps={{
+                  ...params.InputLabelProps,
+                  style: {
+                    color: "whitesmoke",
+                  },
+                }}
+                InputProps={{
+                  ...params.InputProps,
+                  style: {
+                    color: "whitesmoke",
+                  },
+                }}
+              />
+            )}
+          />
 
           {/* Basket Icon */}
           <BasketButton />
