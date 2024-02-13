@@ -9,7 +9,7 @@ const BookPage = () => {
   const [bookData, setBookData] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/books/${book_id}`)
+    fetch(`http://192.168.1.178:3001/books/${book_id}`)
       .then((res) => res.json())
       .then((data) => setBookData(data))
       .catch((err) => console.error(err));
