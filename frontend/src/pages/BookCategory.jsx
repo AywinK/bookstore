@@ -11,7 +11,7 @@ const BookCategory = () => {
     const [booksData, setBooksData] = useState(null);
 
     useEffect(() => {
-        fetch(`http://192.168.1.178:3001/books/byCategory?category_name=${category_name}`)
+        fetch(`http://192.168.1.65:3001/books/byCategory?category_name=${category_name}`)
             .then(res => res.json())
             .then(data => setBooksData(data))
             .catch(err => console.error(err));

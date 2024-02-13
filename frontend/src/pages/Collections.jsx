@@ -8,7 +8,7 @@ const Collections = () => {
     const [collectionData, setCollectionData] = useState(null);
 
     useEffect(() => {
-        fetch("http://192.168.1.178:3001/categories")
+        fetch("http://192.168.1.65:3001/categories")
             .then(res => res.json())
             .then(data => setCollectionData(data));
     }, [])

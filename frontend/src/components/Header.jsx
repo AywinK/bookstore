@@ -54,9 +54,11 @@ const Header = () => {
   console.log(searchResults);
   console.log("selectedVal", selectedValue);
 
+  const {data, loading, error} = useServerFetch();
+
   useEffect(() => {
     const fetchRequest =
-      keyword && `http://192.168.1.178:3001/book/search?search=${keyword}`; // : "http://localhost:3001/books"
+      keyword && `http://192.168.1.65:3001/book/search?search=${keyword}`; // : "http://localhost:3001/books"
     if (keyword.length > 0) {
       fetch(fetchRequest)
         .then((res) => res.json())
