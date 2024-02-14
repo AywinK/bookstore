@@ -1,17 +1,14 @@
-import { useEffect, useState } from "react";
 import CategoryBox from "../components/CategoryBox";
 import { CircularProgress } from "@mui/material";
-
+import useServerFetch from "../customHooks/useServerFetch";
 
 const Collections = () => {
 
-    const [collectionData, setCollectionData] = useState(null);
+    const { data, loading, error } = useServerFetch("categories");
 
-    useEffect(() => {
-        fetch("http://localhost:3001/categories")
-            .then(res => res.json())
-            .then(data => setCollectionData(data));
-    }, [])
+    if (loading) return <CircularProgress />
+
+    if (error) return <>{error.message}<p>Please try again</p></>
 
     return (
         <div
@@ -23,11 +20,8 @@ const Collections = () => {
             }}
         >
             {
-                collectionData
-                    ?
-                    collectionData.map(({ category_name }) => <CategoryBox key={category_name} categoryLink={`${category_name}`} categoryName={category_name} />)
-                    :
-                    <CircularProgress />
+                data.map(({ category_name }) => <CategoryBox key={category_name} categoryLink={`${category_name}`} categoryName={category_name} />)
+
             }
         </div>
     )

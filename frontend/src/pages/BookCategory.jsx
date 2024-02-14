@@ -1,27 +1,22 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 import BookCard from "../components/BookCard";
 import { Container } from "@mui/material";
+import useServerFetch from "../customHooks/useServerFetch";
 
 const BookCategory = () => {
 
     const { category_name } = useParams();
 
-    const [booksData, setBooksData] = useState(null);
+    const { data, loading, error } = useServerFetch(`books/byCategory?category_name=${category_name}`);
 
-    useEffect(() => {
-        fetch(`http://localhost:3001/books/byCategory?category_name=${category_name}`)
-            .then(res => res.json())
-            .then(data => setBooksData(data))
-            .catch(err => console.error(err));
-    }, [category_name]);
+    if (loading) return <CircularProgress />
 
-    console.log(booksData);
+    if (error) return <>{error.message}<p>Please try again</p></>
 
     return (
         <Container
-        component="main"
+            component="main"
             style={{
                 margin: "20px auto",
                 display: "flex",
@@ -33,7 +28,7 @@ const BookCategory = () => {
                 }
             }}
         >
-            {booksData ? booksData.map(book => <BookCard key={book.book_id} book={book} />) : <CircularProgress />}
+            {data.map(book => <BookCard key={book.book_id} book={book} />)}
         </Container>
     )
 }
