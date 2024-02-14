@@ -9,7 +9,7 @@ const getAllCategories = async (req, res) => {
         res.status(200).json(categories.map(el => new CategoryClass(el.category_id, el.category_name)))
     } catch (err) {
         console.error(err);
-        res.status(500).json({ error: "Internal Server Error" });
+        res.status(500).json({ message: "Internal Server Error" });
 
     }
 }
