@@ -1,24 +1,21 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Container } from "@mui/material";
+import useServerFetch from "../customHooks/useServerFetch";
 
 const BookPage = () => {
   const { book_id } = useParams();
 
-  const [bookData, setBookData] = useState(null);
+  const { data, loading, error } = useServerFetch(`books/${book_id}`);
 
-  useEffect(() => {
-    fetch(`http://192.168.1.65:3001/books/${book_id}`)
-      .then((res) => res.json())
-      .then((data) => setBookData(data))
-      .catch((err) => console.error(err));
-  }, [book_id]);
+  if (loading) return <CircularProgress />
+
+  if (error) return <>{error.message}<p>Please try again</p></>
 
   return (
     <Container>
       <h1>Work In Progress</h1>
-      <p>{bookData ? JSON.stringify(bookData) : <CircularProgress />}</p>
+      <p>{JSON.stringify(data)}</p>
     </Container>
   );
 };
