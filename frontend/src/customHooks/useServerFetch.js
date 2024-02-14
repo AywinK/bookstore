@@ -12,8 +12,8 @@ const useServerFetch = (urlEndpoint = null, options = null) => { // options for 
     const fetchData = useCallback(async (isMounted) => {
         try {
             const response = await fetch(`${serverLink}${urlEndpoint}`, options && options);
-            if (!response.ok && isMounted) setError(`HTTPS error! Status: ${response.status}`);
             const data = await response.json(); // parse body text of request
+            if (!response.ok && isMounted) setError(`HTTPS error! Status: ${response.status} ${data?.message || response.statusText}`);
             isMounted && setData(data);
         } catch (error) {
             isMounted && setError(error);

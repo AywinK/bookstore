@@ -8,7 +8,7 @@ const Collections = () => {
 
     if (loading) return <CircularProgress />
 
-    if (error) return <>{error.message}<p>Please try again</p></>
+    if (error) return <>{error}<p>Please try again</p></>
 
     return (
         <div
