@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import HideHeaderOnScroll from "./HideHeaderOnScroll";
 import BasketButton from "./BasketButton";
 import HamburgerMenuButton from "./HamburgerMenuButton";
+import { serverLink } from "../siteData/serverLink.json";
 
 const Header = () => {
   const renderOption = (props, option) => (
@@ -54,27 +55,31 @@ const Header = () => {
   console.log(searchResults);
   console.log("selectedVal", selectedValue);
 
-  const {data, loading, error} = useServerFetch();
-
   useEffect(() => {
+    let isMounted = true;
     const fetchRequest =
-      keyword && `http://192.168.1.65:3001/book/search?search=${keyword}`; // : "http://localhost:3001/books"
+      keyword && `${serverLink}book/search?search=${keyword}`; //
     if (keyword.length > 0) {
       fetch(fetchRequest)
         .then((res) => res.json())
         .then((data) => {
-          setSearchResults(() =>
-            data
-              .map(
-                (book, index) =>
-                  index < 5 && { ...book, label: book.book_title }
-              )
-              .filter((el) => el)
-          );
+          if (isMounted) {
+            setSearchResults(() =>
+              data
+                .map(
+                  (book, index) =>
+                    index < 5 && { ...book, label: book.book_title }
+                )
+                .filter((el) => el)
+            );
+          }
         })
         .catch((error) => {
           console.error("Error fetching search results:", error);
         });
+    }
+    return () => {
+      isMounted = false;
     }
   }, [keyword]);
 
