@@ -22,7 +22,7 @@ const Header = () => {
       >
         {option.label}
       </Typography>
-      {option.label !== "Start typing to search for books" && (
+      {option.label !== "No search results found" && (
         <Button
           onTouchEnd={(e) => {
             // Handle button click here
@@ -95,7 +95,7 @@ const Header = () => {
             sx={{ flexGrow: "1" }}
             groupBy={option => option?.author || option.publisher}
             getOptionDisabled={(option) =>
-              option.label === "Start typing to search for books"
+              option.label === "No search results found"
             }
             renderOption={renderOption}
             defaultValue={"Search by title, ISBN, author or publisher"}
