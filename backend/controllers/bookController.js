@@ -69,8 +69,8 @@ const getFiveBooksBySearchQuery = async (req, res) => {
             ],
             limit: 5
         });
-
-        res.status(200).json(books.map(el => new BookClass(el.book_id, el.book_title, el.isbn, el.publication_year, el.price, el.book_description, el.stock_quantity, el.average_ratings, el.count_ratings, el.Author.full_name, el.Publisher.publisher_name)));
+        //currently using shortcut so frontend doesn't crash on error. Autocomplete component is a mess
+        !books.length ? res.status(404).json([{ book_title: "No search results match your query" }]) : res.status(200).json(books.map(el => new BookClass(el.book_id, el.book_title, el.isbn, el.publication_year, el.price, el.book_description, el.stock_quantity, el.average_ratings, el.count_ratings, el.Author.full_name, el.Publisher.publisher_name)));
 
     } catch (err) {
         console.error(err);
@@ -98,7 +98,9 @@ const getAllBooksByCategoryName = async (req, res) => {
             ],
         });
 
-        res.status(200).json(books.map(el => new BookClass(el.book_id, el.book_title, el.isbn, el.publication_year, el.price, el.book_description, el.stock_quantity, el.average_ratings, el.count_ratings, el.Author.full_name, el.Publisher.publisher_name)));
+        console.log(books);
+
+        !books.length ? res.status(404).json({ message: "Category not found" }) : res.status(200).json(books.map(el => new BookClass(el.book_id, el.book_title, el.isbn, el.publication_year, el.price, el.book_description, el.stock_quantity, el.average_ratings, el.count_ratings, el.Author.full_name, el.Publisher.publisher_name)));
 
 
     } catch (err) {
