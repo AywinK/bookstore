@@ -9,6 +9,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import BookPage from "./pages/BookPage";
 import Basket from "./pages/Basket";
 import CheckoutLayout from "./layouts/CheckoutLayout";
+import CheckoutDelivery from "./pages/CheckoutDelivery";
+import CheckoutPayment from "./pages/CheckoutPayment";
 
 function App() {
   return (
@@ -32,8 +34,14 @@ function App() {
         </Route>
 
         <Route path="/checkout" element={<CheckoutLayout />}>
-          <Route path="delivery" />
-          <Route path="payment" element={<Collections />} />
+          <Route
+            path="delivery"
+            element={<CheckoutDelivery /> ?? <Collections />}
+          />
+          <Route
+            path="payment"
+            element={<CheckoutPayment /> ?? <Collections />}
+          />
         </Route>
       </Routes>
     </CssBaseline>
