@@ -9,7 +9,8 @@
     "start": "node server.js"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "transform": {}
   },
   "author": "",
   "license": "ISC",
