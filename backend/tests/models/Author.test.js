@@ -30,7 +30,6 @@ describe('Author Model', () => {
 
     it('should have correct attributes', () => {
         const attributes = Author.getAttributes();
-        console.log("here", attributes)
         expect(attributes.author_id).toBeDefined();
         expect(attributes.author_id.type).toEqual(DataTypes.INTEGER());
         expect(attributes.author_id.allowNull).toBe(false);
