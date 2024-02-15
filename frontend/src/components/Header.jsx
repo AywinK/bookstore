@@ -2,11 +2,11 @@ import { AppBar, Toolbar, List, Typography } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { useState, useEffect } from "react";
-import Button from "@mui/material/Button";
 import HideHeaderOnScroll from "./HideHeaderOnScroll";
 import BasketButton from "./BasketButton";
 import HamburgerMenuButton from "./HamburgerMenuButton";
 import { serverLink } from "../siteData/serverLink.json";
+import AddToBasket from "./AddToBasketButton";
 
 const Header = () => {
   const renderOption = (props, option) => (
@@ -23,27 +23,13 @@ const Header = () => {
         {option.label}
       </Typography>
       {option.label !== "No search results found" && (
-        <Button
-          onTouchEnd={(e) => {
-            // Handle button click here
-            e.preventDefault();
-            e.stopPropagation();
-            console.table(option);
-            setSearchResults([]);
-            setKeyword("");
-          }}
-          onMouseUp={(e) => {
-            console.log(e)
-            // Handle button click here
-            e.preventDefault();
-            e.stopPropagation();
-            console.table(option);
-            setSearchResults([]);
-            setKeyword("");
-          }}
-        >
-          Add to Basket
-        </Button>
+        <AddToBasket book={(() => {
+          // eslint-disable-next-line no-unused-vars
+          const { label, ...rest } = option;
+          return rest;
+        })()
+        }
+        />
       )}
     </List>
   );
@@ -51,9 +37,6 @@ const Header = () => {
   const [keyword, setKeyword] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [selectedValue, setSelectedValue] = useState("");
-
-  console.log(searchResults);
-  console.log("selectedVal", selectedValue);
 
   useEffect(() => {
     let isMounted = true;
@@ -108,6 +91,7 @@ const Header = () => {
               setKeyword(val);
             }}
             onClose={() => setKeyword("")}
+            onSelect={() => setSelectedValue("")}
             options={searchResults}
             filterOptions={(x) => x}
             getOptionLabel={(option) => option?.label || ""}

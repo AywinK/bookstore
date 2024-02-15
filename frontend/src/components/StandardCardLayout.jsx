@@ -39,7 +39,8 @@ const StandardCardLayout = ({ children }) => {
         gridTemplateRows: "4fr 1fr",
         gap: "10px",
         maxWidth: "600px",
-        margin: "auto",
+        marginLeft: "auto",
+        marginRight: "auto",
         width: "100%",
         borderRadius: "8px",
         "& > *": {

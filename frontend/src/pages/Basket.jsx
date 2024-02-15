@@ -10,7 +10,7 @@ const Basket = () => {
     <Container
       sx={{
         "& > *": {
-          margin: "10px auto",
+          margin: "15px auto",
         },
       }}
     >
