@@ -6,8 +6,16 @@ import Typography from "@mui/material/Typography";
 import ArrowBackIosNewSharpIcon from "@mui/icons-material/ArrowBackIosNewSharp";
 import HelpSharpIcon from "@mui/icons-material/HelpSharp";
 
+import { useNavigate } from "react-router-dom";
+
 // eslint-disable-next-line react/prop-types
 const CheckoutHeader = ({ pageHeading = "Heading" }) => {
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   return (
     <HideHeaderOnScroll>
       <AppBar position="fixed" id="header">
@@ -19,7 +27,7 @@ const CheckoutHeader = ({ pageHeading = "Heading" }) => {
           }}
         >
           {/* Back button */}
-          <IconButton>
+          <IconButton onClick={handleGoBack}>
             <ArrowBackIosNewSharpIcon fontSize="large" />
           </IconButton>
 
