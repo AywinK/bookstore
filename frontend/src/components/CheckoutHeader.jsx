@@ -74,15 +74,20 @@ const CheckoutHeader = ({ pageHeading = "Heading" }) => {
               transform: "translate(-50%, -50%)",
               width: "330px",
               bgcolor: "background.paper",
-              border: "50px solid red",
+              border: "5px solid #29b6f6",
               boxShadow: 24,
-              p: 4,
+              p: 2,
             }}
           >
             <Typography id="modal-modal-title" variant="h6" component="h2">
               Customer Support
             </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              id="modal-modal-description"
+              color="InfoText"
+              variant="body1"
+              sx={{ mt: 2 }}
+            >
               This is the help content. You can replace it with your actual help
               information.
             </Typography>
