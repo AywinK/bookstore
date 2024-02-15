@@ -33,6 +33,7 @@ function App() {
 
         <Route path="/checkout" element={<CheckoutLayout />}>
           <Route path="delivery" />
+          <Route path="payment" element={<Collections />} />
         </Route>
       </Routes>
     </CssBaseline>
