@@ -45,6 +45,7 @@ const Header = () => {
       keyword && `${serverLink}book/search?search=${keyword}`; //
     if (keyword.length > 0) {
       setLoading(true);
+      setSearchResults([]);
       fetch(fetchRequest)
         .then((res) => res.json())
         .then((data) => {

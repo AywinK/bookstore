@@ -40,7 +40,7 @@ const UpdateBookQuantityCounter = ({ isMobile, book }) => {
   const handleQuantityInputFocus = () => quantityTextFieldRef.current.select(); // reduce step needed to update quantity in basket
 
   const handleQuantityInputKeyDown = e => (!/^\d+$/.test(e.key) && //prevent non-digit input
-    !["Backspace", "ArrowLeft", "ArrowRight"].some(key => key === e.key) // allow moving cursor and removing numbers
+    !["Backspace", "ArrowLeft", "ArrowRight", "Tab"].some(key => key === e.key) // allow moving cursor, removing numbers, tab navigation
     && e.preventDefault());
 
   const handleQuantityInputBlur = e => e.target.value = quantity; // display latest value
