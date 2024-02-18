@@ -88,8 +88,7 @@ const CheckoutHeader = ({ pageHeading = "Heading" }) => {
               variant="body1"
               sx={{ mt: 2 }}
             >
-              This is the help content. You can replace it with your actual help
-              information.
+              [Bookstore contact details here]
             </Typography>
           </Box>
         </Modal>
