@@ -33,7 +33,7 @@ import { Sequelize } from "sequelize";
 
 const sequelize = new Sequelize(
     'bookstoreDb', // Database name
-    'munchlax',    // Username
+    process.env.dbUser,    // Username
     process.env.dbPassword, // Password (replace with actual password)
     {
       dialect: 'mssql',
