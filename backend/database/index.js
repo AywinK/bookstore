@@ -32,11 +32,11 @@ import { Sequelize } from "sequelize";
 // );
 
 const sequelize = new Sequelize(
-    "aywin_db",
-    "SA",
-    "yourStrong(!)Password",
+    process.env.dbUser,
+    "aywinbookstore",
+    process.env.dbPassword,
     {
-        host: "localhost",
+        host: "aywinbookstore.database.windows.net",
         dialect: "mssql",
         dialectOptions: {
             options: {
