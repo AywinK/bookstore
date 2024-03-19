@@ -1,5 +1,7 @@
 import { Sequelize } from "sequelize";
 
+console.log("console log here" , process.env.dbUser, process.env.dbPassword);
+
 const sequelize = new Sequelize(
     'bookstoreDb', // Database name
     process.env.dbUser,    // Username
@@ -24,6 +26,5 @@ const sequelize = new Sequelize(
     }
   );
 
-  console.log(process.env.dbUser, process.env.dbPassword);
 
 export { sequelize };
