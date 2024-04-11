@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import CheckoutHeader from "../components/CheckoutHeader";
 import { useLocation } from "react-router-dom";
+import CheckoutFooter from "../components/CheckoutFooter";
 
 const CheckoutLayout = () => {
   const { pathname } = useLocation();
@@ -17,7 +18,7 @@ const CheckoutLayout = () => {
       >
         <Outlet />
       </main>
-      <footer></footer>
+      <CheckoutFooter></CheckoutFooter>
     </>
   );
 };
