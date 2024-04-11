@@ -47,13 +47,13 @@ const CheckoutDelivery = () => {
             marginBottom={5}
             gap={2}
             sx={{
-              padding: "10px",
+              padding: "15px",
               "& .MuiTextField-root": {
                 // border: "1rem solid red",
-                borderRadius: "40px",
+                // borderRadius: "40px",
                 "& input": {
                   // border: "1rem solid red",
-                  borderRadius: "40px"
+                  // borderRadius: "40px"
                 }
               }
             }}
@@ -134,6 +134,68 @@ const CheckoutDelivery = () => {
               onBlur={formik.handleBlur}
               error={formik.touched.phone && Boolean(formik.errors.phone)}
               helperText={formik.touched.phone && formik.errors.phone}
+            >
+            </TextField>
+
+            <Typography
+              variant="h4"
+              component="h2"
+              sx={{
+                textDecoration: "underline",
+                fontWeight: "600"
+              }}
+            >
+              Delivery Address
+            </Typography>
+            <TextField
+              InputProps={{
+                style: {
+                  borderRadius: "16px"
+                }
+              }}
+              fullWidth
+              id="addressLine1"
+              name="addressLine1"
+              label="Address Line 1"
+              value={formik.values.addressLine1}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.addressLine1 && Boolean(formik.errors.addressLine1)}
+              helperText={formik.touched.addressLine1 && formik.errors.addressLine1}
+            >
+            </TextField>
+            <TextField
+              InputProps={{
+                style: {
+                  borderRadius: "16px"
+                }
+              }}
+              fullWidth
+              id="addressLine2"
+              name="addressLine2"
+              label="Address Line 2"
+              value={formik.values.addressLine2}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.addressLine2 && Boolean(formik.errors.addressLine2)}
+              helperText={formik.touched.addressLine2 && formik.errors.addressLine2}
+            >
+            </TextField>
+            <TextField
+              InputProps={{
+                style: {
+                  borderRadius: "16px"
+                }
+              }}
+              fullWidth
+              id="postcode"
+              name="postcode"
+              label="Postcode"
+              value={formik.values.postcode}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.postcode && Boolean(formik.errors.postcode)}
+              helperText={formik.touched.postcode && formik.errors.postcode}
             >
             </TextField>
             <Button
