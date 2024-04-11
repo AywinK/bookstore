@@ -37,12 +37,15 @@ const Header = () => {
   const [keyword, setKeyword] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [selectedValue, setSelectedValue] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
     const fetchRequest =
       keyword && `${serverLink}book/search?search=${keyword}`; //
     if (keyword.length > 0) {
+      setLoading(true);
+      setSearchResults([]);
       fetch(fetchRequest)
         .then((res) => res.json())
         .then((data) => {
@@ -63,6 +66,7 @@ const Header = () => {
     }
     return () => {
       isMounted = false;
+      setLoading(false);
     }
   }, [keyword]);
 
@@ -75,6 +79,8 @@ const Header = () => {
 
           {/* Search Bar with Autocomplete */}
           <Autocomplete
+            loading={loading}
+            loadingText="Loading results..."
             sx={{ flexGrow: "1" }}
             groupBy={option => option?.author || option.publisher}
             getOptionDisabled={(option) =>
