@@ -1,9 +1,12 @@
 import * as yup from "yup";
-import { Formik } from "formik";
+import { Form, Formik } from "formik";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Radio from "@mui/material/Radio";
 
 
 const validationSchema = yup.object({
@@ -39,14 +42,13 @@ const CheckoutDelivery = () => {
       }}
     >
       {(formik) => (
-        <form
-          onSubmit={formik.handleSubmit}
-        >
+        <Form>
           <Stack
-            marginTop={10}
-            marginBottom={5}
+            maxWidth={400}
             gap={2}
             sx={{
+              border: "0.2rem solid red",
+              margin: "auto",
               padding: "15px",
               "& .MuiTextField-root": {
                 // border: "1rem solid red",
@@ -198,6 +200,30 @@ const CheckoutDelivery = () => {
               helperText={formik.touched.postcode && formik.errors.postcode}
             >
             </TextField>
+
+            <Typography
+              variant="h4"
+              component="h2"
+              sx={{
+                textDecoration: "underline",
+                fontWeight: "600"
+              }}
+            >
+              Delivery Options
+            </Typography>
+            <RadioGroup value={formik.values.deliveryOption} onChange={e => formik.setFieldValue("deliveryOption", e.target.value)}>
+              <FormControlLabel
+              value="first class"
+              control={<Radio/>}
+              label="First Class"
+              />
+              <FormControlLabel
+              value="second class"
+              control={<Radio/>}
+              label="Second Class"
+              />
+            </RadioGroup>
+
             <Button
               type="submit"
               variant="contained"
@@ -207,7 +233,7 @@ const CheckoutDelivery = () => {
               }}
             >PAYMENT</Button>
           </Stack>
-        </form>
+        </Form>
       )}
     </Formik>
   )

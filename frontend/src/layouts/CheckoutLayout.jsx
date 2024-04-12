@@ -18,7 +18,7 @@ const CheckoutLayout = () => {
       >
         <Outlet />
       </main>
-      <CheckoutFooter></CheckoutFooter>
+      <CheckoutFooter />
     </>
   );
 };
