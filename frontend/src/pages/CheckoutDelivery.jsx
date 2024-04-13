@@ -50,14 +50,6 @@ const CheckoutDelivery = () => {
               border: "0.2rem solid red",
               margin: "auto",
               padding: "15px",
-              "& .MuiTextField-root": {
-                // border: "1rem solid red",
-                // borderRadius: "40px",
-                "& input": {
-                  // border: "1rem solid red",
-                  // borderRadius: "40px"
-                }
-              }
             }}
           >
             <CheckoutHeading heading="Personal Details" />
@@ -87,6 +79,7 @@ const CheckoutDelivery = () => {
             </RadioGroup>
 
             <Button
+              disabled={!(formik.dirty && formik.isValid)}
               type="submit"
               variant="contained"
               sx={{

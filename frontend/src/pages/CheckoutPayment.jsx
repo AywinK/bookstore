@@ -1,7 +1,6 @@
 import * as yup from "yup";
 import { Form, Formik } from "formik";
 import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -54,14 +53,6 @@ const CheckoutPayment = () => {
               border: "0.2rem solid red",
               margin: "auto",
               padding: "15px",
-              "& .MuiTextField-root": {
-                // border: "1rem solid red",
-                // borderRadius: "40px",
-                "& input": {
-                  // border: "1rem solid red",
-                  // borderRadius: "40px"
-                }
-              }
             }}
           >
 
@@ -110,6 +101,7 @@ const CheckoutPayment = () => {
             </FormGroup>
 
             <Button
+            disabled={!(formik.dirty && formik.isValid)}
               type="submit"
               variant="contained"
               sx={{
