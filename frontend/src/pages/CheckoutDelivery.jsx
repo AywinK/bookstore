@@ -7,6 +7,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import { CheckoutHeading } from "../components/CheckoutHeading";
 import CheckoutTextField from "../components/CheckoutTextField";
+import { useNavigate } from "react-router-dom";
 
 
 const validationSchema = yup.object({
@@ -32,12 +33,16 @@ const initialFormValues = {
 };
 
 const CheckoutDelivery = () => {
+
+  const navigate = useNavigate();
+
   return (
     <Formik
       initialValues={initialFormValues}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting }) => {
         console.log(values);
+        navigate("/checkout/payment");
         setSubmitting(false);
       }}
     >
