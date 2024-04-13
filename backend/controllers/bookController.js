@@ -98,8 +98,6 @@ const getAllBooksByCategoryName = async (req, res) => {
             ],
         });
 
-        console.log(books);
-
         !books.length ? res.status(404).json({ message: "Category not found" }) : res.status(200).json(books.map(el => new BookClass(el.book_id, el.book_title, el.isbn, el.publication_year, el.price, el.book_description, el.stock_quantity, el.average_ratings, el.count_ratings, el.Author.full_name, el.Publisher.publisher_name)));
 
 
