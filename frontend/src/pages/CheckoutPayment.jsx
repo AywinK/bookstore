@@ -51,7 +51,6 @@ const CheckoutPayment = () => {
             maxWidth={400}
             gap={2}
             sx={{
-              border: "0.2rem solid red",
               margin: "auto",
               padding: "15px",
             }}
