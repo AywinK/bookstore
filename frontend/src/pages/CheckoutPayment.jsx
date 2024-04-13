@@ -9,6 +9,7 @@ import FormGroup from "@mui/material/FormGroup";
 import Checkbox from "@mui/material/Checkbox";
 import { CheckoutHeading } from "../components/CheckoutHeading";
 import CheckoutTextField from "../components/CheckoutTextField";
+import OrderSummaryCard from "../components/OrderSummaryCard";
 
 const validationSchema = yup.object().shape({
   cardholderName: yup.string().required("Please provide the cardholder's name").min(1),
@@ -100,8 +101,10 @@ const CheckoutPayment = () => {
               />
             </FormGroup>
 
+            <OrderSummaryCard />
+
             <Button
-            disabled={!(formik.dirty && formik.isValid)}
+              disabled={!(formik.dirty && formik.isValid)}
               type="submit"
               variant="contained"
               sx={{

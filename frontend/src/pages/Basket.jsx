@@ -3,6 +3,7 @@ import Container from "@mui/material/Container";
 import { useBasket } from "../customHooks/useBasket";
 import Button from "@mui/material/Button"
 import { Link } from "react-router-dom";
+import OrderSummaryCard from "../components/OrderSummaryCard";
 
 const Basket = () => {
 
@@ -33,6 +34,7 @@ const Basket = () => {
             >Checkout
             </Button>
           </Link>
+          <OrderSummaryCard />
           {basket?.map((book) => (
             <BasketBookCard key={book?.book_id} book={book} />
           ))}
