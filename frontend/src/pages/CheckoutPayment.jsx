@@ -1,7 +1,6 @@
 import * as yup from "yup";
 import { Form, Formik } from "formik";
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -9,6 +8,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import FormGroup from "@mui/material/FormGroup";
 import Checkbox from "@mui/material/Checkbox";
+import { CheckoutHeading } from "../components/CheckoutHeading";
+import CheckoutTextField from "../components/CheckoutTextField";
 
 const validationSchema = yup.object().shape({
   cardholderName: yup.string().required("Please provide the cardholder's name").min(1),
@@ -64,16 +65,7 @@ const CheckoutPayment = () => {
             }}
           >
 
-            <Typography
-              variant="h4"
-              component="h2"
-              sx={{
-                textDecoration: "underline",
-                fontWeight: "600"
-              }}
-            >
-              Payment Options
-            </Typography>
+            <CheckoutHeading heading="Payment Options" />
             <RadioGroup defaultValue="credit/debit" value={formik.values.deliveryOption} onChange={e => formik.setFieldValue("deliveryOption", e.target.value)}>
               <FormControlLabel
                 value="credit/debit"
@@ -100,87 +92,11 @@ const CheckoutPayment = () => {
               />
             </RadioGroup>
 
-            <Typography
-              variant="h4"
-              component="h2"
-              sx={{
-                textDecoration: "underline",
-                fontWeight: "600"
-              }}
-            >
-              Card Details
-            </Typography>
-            <TextField
-              InputProps={{
-                style: {
-                  borderRadius: "16px"
-                }
-              }}
-              fullWidth
-              inputMode="numeric"
-              id="cardholderName"
-              name="cardholderName"
-              label="Cardholder Name"
-              value={formik.values.cardholderName}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.cardholderName && Boolean(formik.errors.cardholderName)}
-              helperText={formik.touched.cardholderName && formik.errors.cardholderName}
-            >
-            </TextField>
-            <TextField
-              InputProps={{
-                style: {
-                  borderRadius: "16px"
-                }
-              }}
-              fullWidth
-              inputMode="numeric"
-              id="cardNumber"
-              name="cardNumber"
-              label="Card Number"
-              value={formik.values.cardNumber}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.cardNumber && Boolean(formik.errors.cardNumber)}
-              helperText={formik.touched.cardNumber && formik.errors.cardNumber}
-            >
-            </TextField>
-            <TextField
-              InputProps={{
-                style: {
-                  borderRadius: "16px"
-                }
-              }}
-              fullWidth
-              id="expiryDate"
-              name="expiryDate"
-              label="Expiry Date"
-              value={formik.values.expiryDate}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.expiryDate && Boolean(formik.errors.expiryDate)}
-              helperText={formik.touched.expiryDate && formik.errors.expiryDate}
-            >
-            </TextField>
-            <TextField
-              InputProps={{
-                style: {
-                  borderRadius: "16px"
-                }
-              }}
-              fullWidth
-              inputMode="numeric"
-              id="securityCode"
-              name="securityCode"
-              label="Security Code"
-              value={formik.values.securityCode}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.securityCode && Boolean(formik.errors.securityCode)}
-              helperText={formik.touched.securityCode && formik.errors.securityCode}
-            >
-            </TextField>
+            <CheckoutHeading heading="Card Details" />
+            <CheckoutTextField name="cardholderName" label="Cardholder Name" inputMode="numeric" />
+            <CheckoutTextField name="cardNumber" label="Card Number" inputMode="numeric" />
+            <CheckoutTextField name="expiryDate" label="Expiry Date" />
+            <CheckoutTextField name="securityCode" label="Security Code" inputMode="numeric" />
 
             <FormGroup>
               <FormControlLabel

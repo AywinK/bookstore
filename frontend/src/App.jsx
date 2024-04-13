@@ -36,11 +36,11 @@ function App() {
         <Route path="/checkout" element={<CheckoutLayout />}>
           <Route
             path="delivery"
-            element={<CheckoutDelivery /> ?? <Collections />}
+            element={<CheckoutDelivery />}
           />
           <Route
             path="payment"
-            element={<CheckoutPayment /> ?? <Collections />}
+            element={<CheckoutPayment />}
           />
         </Route>
       </Routes>

@@ -1,12 +1,12 @@
 import * as yup from "yup";
 import { Form, Formik } from "formik";
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
+import { CheckoutHeading } from "../components/CheckoutHeading";
+import CheckoutTextField from "../components/CheckoutTextField";
 
 
 const validationSchema = yup.object({
@@ -60,167 +60,29 @@ const CheckoutDelivery = () => {
               }
             }}
           >
-            <Typography
-              variant="h4"
-              component="h2"
-              sx={{
-                textDecoration: "underline",
-                fontWeight: "600"
-              }}
-            >
-              Personal Details
-            </Typography>
-            <TextField
-              InputProps={{
-                style: {
-                  borderRadius: "16px"
-                }
-              }}
-              fullWidth
-              id="firstName"
-              name="firstName"
-              label="First Name"
-              value={formik.values.firstName}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-              helperText={formik.touched.firstName && formik.errors.firstName}
-            >
-            </TextField>
-            <TextField
-              InputProps={{
-                style: {
-                  borderRadius: "16px"
-                }
-              }}
-              fullWidth
-              id="lastName"
-              name="lastName"
-              label="Last Name"
-              value={formik.values.lastName}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-              helperText={formik.touched.lastName && formik.errors.lastName}
-            >
-            </TextField>
-            <TextField
-              InputProps={{
-                style: {
-                  borderRadius: "16px"
-                }
-              }}
-              fullWidth
-              id="email"
-              name="email"
-              label="Email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
-            >
-            </TextField>
-            <TextField
-              InputProps={{
-                style: {
-                  borderRadius: "16px"
-                }
-              }}
-              fullWidth
-              id="phone"
-              name="phone"
-              label="Phone number"
-              value={formik.values.phone}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.phone && Boolean(formik.errors.phone)}
-              helperText={formik.touched.phone && formik.errors.phone}
-            >
-            </TextField>
+            <CheckoutHeading heading="Personal Details" />
+            <CheckoutTextField name="firstName" label="First Name" />
+            <CheckoutTextField name="lastName" label="Last Name" />
+            <CheckoutTextField name="email" label="Email" />
+            <CheckoutTextField name="phone" label="Phone Number" />
 
-            <Typography
-              variant="h4"
-              component="h2"
-              sx={{
-                textDecoration: "underline",
-                fontWeight: "600"
-              }}
-            >
-              Delivery Address
-            </Typography>
-            <TextField
-              InputProps={{
-                style: {
-                  borderRadius: "16px"
-                }
-              }}
-              fullWidth
-              id="addressLine1"
-              name="addressLine1"
-              label="Address Line 1"
-              value={formik.values.addressLine1}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.addressLine1 && Boolean(formik.errors.addressLine1)}
-              helperText={formik.touched.addressLine1 && formik.errors.addressLine1}
-            >
-            </TextField>
-            <TextField
-              InputProps={{
-                style: {
-                  borderRadius: "16px"
-                }
-              }}
-              fullWidth
-              id="addressLine2"
-              name="addressLine2"
-              label="Address Line 2"
-              value={formik.values.addressLine2}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.addressLine2 && Boolean(formik.errors.addressLine2)}
-              helperText={formik.touched.addressLine2 && formik.errors.addressLine2}
-            >
-            </TextField>
-            <TextField
-              InputProps={{
-                style: {
-                  borderRadius: "16px"
-                }
-              }}
-              fullWidth
-              id="postcode"
-              name="postcode"
-              label="Postcode"
-              value={formik.values.postcode}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.postcode && Boolean(formik.errors.postcode)}
-              helperText={formik.touched.postcode && formik.errors.postcode}
-            >
-            </TextField>
 
-            <Typography
-              variant="h4"
-              component="h2"
-              sx={{
-                textDecoration: "underline",
-                fontWeight: "600"
-              }}
-            >
-              Delivery Options
-            </Typography>
+            <CheckoutHeading heading="Delivery Address" />
+            <CheckoutTextField name="addressLine1" label="Address Line 1" />
+            <CheckoutTextField name="addressLine2" label="Address Line 2" />
+            <CheckoutTextField name="postcode" label="Postcode" />
+
+            <CheckoutHeading heading="Delivery Options" />
             <RadioGroup value={formik.values.deliveryOption} onChange={e => formik.setFieldValue("deliveryOption", e.target.value)}>
               <FormControlLabel
-              value="first class"
-              control={<Radio/>}
-              label="First Class"
+                value="first class"
+                control={<Radio />}
+                label="First Class"
               />
               <FormControlLabel
-              value="second class"
-              control={<Radio/>}
-              label="Second Class"
+                value="second class"
+                control={<Radio />}
+                label="Second Class"
               />
             </RadioGroup>
 
