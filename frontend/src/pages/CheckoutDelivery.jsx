@@ -38,7 +38,7 @@ const CheckoutDelivery = () => {
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting }) => {
         console.log(values);
-        // setSubmitting(false);
+        setSubmitting(false);
       }}
     >
       {(formik) => (
@@ -231,7 +231,7 @@ const CheckoutDelivery = () => {
                 margin: "auto",
                 maxWidth: "300px"
               }}
-            >PAYMENT</Button>
+            >Next: PAYMENT</Button>
           </Stack>
         </Form>
       )}
