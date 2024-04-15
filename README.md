@@ -43,6 +43,8 @@ Frontend application can be accessed at https://bookstore.aywin.uk
 
 
 <img src="./documentation_assets/demo.gif" alt="Demo" style="max-width:500px; max-height:400px;">
+<img src="./documentation_assets/demo2.gif" alt="Demo2" style="max-width:500px; max-height:400px;">
+
 
 ## License
 
