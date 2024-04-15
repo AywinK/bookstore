@@ -22,19 +22,19 @@ An online bookstore ecommerce web application with React frontend and an SQL dat
 
 ### Homepage
 
-<img src="./documentation_assets/homepage.jpg" alt="Homepage" style="max-width:500px; max-height:300px;">
+<img src="./documentation_assets/homepage.jpg" alt="Homepage">
 
 ### Book Category
 
-<img src="./documentation_assets/books.png" alt="Book Category" style="max-width:500px; max-height:300px;">
+<img src="./documentation_assets/books.png" alt="Book Category">
 
 ### Checkout(Delivery)
 
-<img src="./documentation_assets/checkout(delivery).png" alt="Checkout (Delivery)" style="max-width:500px; max-height:300px;">
+<img src="./documentation_assets/checkout(delivery).png" alt="Checkout (Delivery)">
 
 ### Checkout(Payment)
 
-<img src="./documentation_assets/checkout(payment).png" alt="Checkout (Payment)" style="max-width:500px; max-height:300px;">
+<img src="./documentation_assets/checkout(payment).png" alt="Checkout (Payment)">
 
 ## Usage
 
@@ -42,8 +42,8 @@ Frontend application can be accessed at https://bookstore.aywin.uk
 
 
 
-<img src="./documentation_assets/demo.gif" alt="Demo" style="max-width:500px; max-height:400px;">
-<img src="./documentation_assets/demo2.gif" alt="Demo2" style="max-width:500px; max-height:400px;">
+<img src="./documentation_assets/demo.gif" alt="Demo">
+<img src="./documentation_assets/demo2.gif" alt="Demo2">
 
 
 ## License
