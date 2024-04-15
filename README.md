@@ -10,6 +10,7 @@ An online bookstore ecommerce web application with React frontend and an SQL dat
 ## Table of Contents
 
 * [Description](#Description)
+* [Figma Wireframes](#Figma-Wireframes)
 * [Installation](#Installation)
 * [Usage](#Usage)
 * [License](#License)
