@@ -11,6 +11,7 @@ An online bookstore ecommerce web application with React frontend and an SQL dat
 
 * [Description](#Description)
 * [Figma Wireframes](#Figma-Wireframes)
+* [Database Design](#Database-Design)
 * [Installation](#Installation)
 * [Usage](#Usage)
 * [License](#License)
@@ -35,6 +36,12 @@ An online bookstore ecommerce web application with React frontend and an SQL dat
 ### Checkout(Payment)
 
 <img src="./documentation_assets/checkout(payment).png" alt="Checkout (Payment)">
+
+## Database Design
+
+Below is the entity relationship diagram showing how the tables for the backend database in MS-SQL is related.
+
+<img src="./documentation_assets/erd final.png" alt="SQL database entity relationship diagram">
 
 ## Usage
 
