@@ -49,7 +49,7 @@ Frontend application can be accessed at https://bookstore.aywin.uk
 
 
 <p>
-<img src="./documentation_assets/demo.gif" alt="Demo" height="400px">
+<img src="./documentation_assets/demoCompressed.gif" alt="Demo" height="400px">
 <img src="./documentation_assets/demo2.gif" alt="Demo2" height="400px">
 </p>
 
