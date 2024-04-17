@@ -12,6 +12,7 @@ An online bookstore ecommerce web application with React frontend and an SQL dat
 * [Description](#Description)
 * [Figma Wireframes](#Figma-Wireframes)
 * [Database Design](#Database-Design)
+* [Cloud Architecture](#Cloud-Architecture)
 * [Installation](#Installation)
 * [Usage](#Usage)
 * [License](#License)
@@ -42,6 +43,12 @@ An online bookstore ecommerce web application with React frontend and an SQL dat
 Below is the entity relationship diagram showing how the tables for the backend database in MS-SQL is related.
 
 <img src="./documentation_assets/erd final.png" alt="SQL database entity relationship diagram">
+
+## Cloud Architecture
+
+The following image shows services deployed on Azure.
+
+<img src="./documentation_assets/cloud.jpeg" alt="Azure services used for project">
 
 ## Usage
 
